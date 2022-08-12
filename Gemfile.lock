@@ -98,6 +98,10 @@ GEM
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.11.0)
@@ -133,6 +137,7 @@ GEM
     msgpack (1.5.4)
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
+    mysql2 (0.5.4)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -282,9 +287,11 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  dotenv-rails
   enum_help
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mysql2
   net-imap
   net-pop
   net-smtp
