@@ -57,10 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-gem "net-smtp"
-gem "net-pop"
-gem "net-imap"
-
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 #画像投稿機能を追加したいmodelにattachment :画像を入れたいカラム名 + _id を追記
@@ -68,11 +64,13 @@ gem "refile-mini_magick"
 
 gem "enum_help"
 
-# gem 'dotenv-rails'
-# group :production do
-#   gem 'mysql2'
-# end
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
-
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
 
 
