@@ -1,0 +1,40 @@
+<div class="customer_ col1_">
+   <h2 class="p-3 mb-2 bg-dark text-white text-left">ログイン</h2>
+</div>
+
+
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-5">
+        <table class="formdetail_ customer_">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <tbody>
+            <table class="table table-hover">
+             <tr>
+               <th><%= f.label :email %></th>
+                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+             </tr>
+             
+             <tr>
+               <th><%= f.label :password %></th>
+               <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+             </tr>
+             
+            </tbody>
+        </table>
+        
+             <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :パスワードを登録する %>
+              </div>
+             <% end %>
+             
+              <%= f.submit "ログイン", class: "btn btn-primary"  %>
+        <% end %>
+              <%= render "public/shared/links" %>
+    </div>
+  </div>
+</div>
+

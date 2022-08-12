@@ -68,10 +68,10 @@ gem "refile-mini_magick"
 
 gem "enum_help"
 
-gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+# gem 'dotenv-rails'
+# group :production do
+#   gem 'mysql2'
+# end
 
 
 
