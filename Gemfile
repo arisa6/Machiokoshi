@@ -73,3 +73,5 @@ gem "net-smtp"
 gem "net-pop"
 gem "net-imap"
 
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
