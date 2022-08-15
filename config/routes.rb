@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  
-  namespace :public do
-    get 'genres/show'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -40,6 +36,8 @@ Rails.application.routes.draw do
       end
     end
 
+    # get 'public/customers/edit/:id', to: 'public/customers#edit'  
+    # patch 'public/customers/edit/:id', to: 'public/customers#update' 会員情報更新未実装
     resources :items, only:[:index,:show]
     resources :genres, only:[:show]
 
