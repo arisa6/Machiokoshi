@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'genres/show'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -54,6 +57,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:index,:show,:edit,:update]
     resources :genres, only:[:index,:create,:edit,:update]
     resources :items, only:[:index,:new,:create,:show,:edit,:update]
+    post 'items' => 'items#create'
   end
 
 end

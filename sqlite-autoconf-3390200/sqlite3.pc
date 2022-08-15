@@ -1,6 +1,6 @@
 # Package Information for pkg-config
 
-prefix=/opt/sqlite/sqlite3
+prefix=/usr/local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

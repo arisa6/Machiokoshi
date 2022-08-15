@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_13_114050) do
+ActiveRecord::Schema.define(version: 2022_08_15_082612) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_08_13_114050) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "store"
   end
 
   create_table "order_details", force: :cascade do |t|

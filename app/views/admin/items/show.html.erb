@@ -1,2 +1,50 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container" style="margin-top: 50px;">
+  <div class="shadow p-3 mb-5 bg-white rounded">
+  <div class="row">
+    <div class="col-md-3" style="text-align: left;">
+　　　<table class="table">
+      <h2 class="p-3 mb-2 bg-dark text-white">商品詳細</h2>
+    </div>
+    <div class="col-md-8", style="margin-top: 50px;">
+      <tr>
+      <%# if @item.image.attached? %>
+        <%#= image_tag @item.image, size: "250x250" %>
+      <%# else %>
+        <%#= image_tag 'no_image', size: "250x250" %>
+      <%# end %>
+      </tr>
+     </table>
+      </div>
+    <div class="col-md-6 offset-1"style="margin-top: 150px;">
+    <table class="table">
+      <tbody>
+      <td>商品名</td><td><%= @item.name %></td>
+      <tr><td>商品説明</td><td><%= @item.introduction %></td></tr>
+          <tr>
+            <td> 税込価格<br> (税抜価格) </td>
+            <td>
+              <%= @item.add_tax_price.to_s(:delimited) %>(
+              <%= @item.price.to_s(:delimited) %>)円
+            </td>
+          </tr>
+
+          <tr>
+            <td>販売ステータス</td>
+            <td class="font-weight-bold text-success">
+              <% if @item.is_active %><%# is_activeの情報を取得して在庫があるかチェック %>
+              販売中<%# trueの表示がでる %>
+              <% else %>
+              販売停止中<%# falseの表示がでる %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-outline-success" %></td>
+            <td><%= link_to "一覧に戻る", admin_items_path, class: "btn btn-outline-success" %></td>  <%#　なんとなく不便だったのでつけました %>
+          </tr> 
+      </tbody>
+    </table>
+    </div>
+  </div>
+  </div>
+</div>
