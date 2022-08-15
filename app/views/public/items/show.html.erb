@@ -1,8 +1,12 @@
 <h1>商品詳細画面</h1>
 
-<!--<div class='col-md-4 'style="text-align: center;margin-top: 50px;">-->
-        <%#= image_tag @item.get_image, size: "350x350" %>
-<!--      </div>-->
+<div class='col-md-3 'style="text-align: center;margin-top: 50px;">
+        <% if @item.image.attached? %>
+          <%= image_tag @item.image, size: "150x150" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "150x150" %>
+        <% end %>
+</div>
       <div class="col-md-6 "style="margin-top: 50px;">
       
           <h3 class="font-weight-bold my-5"><%= @item.name %></h3>

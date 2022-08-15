@@ -11,10 +11,13 @@
   <h1><%= link_to "＋ 新規追加", new_admin_item_path, class: "btn btn-dark rounded-pill" %></h1>
   
     <% @items.each do |item| %>
-         <%#= attachment_image_tag item, :image %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "150x150" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "150x150" %>
+          <% end %>
          <%= item.store %>
-         <%#= item.name.admin_item_path(item) %>
-         <%= item.name %>
+         <%= link_to item.name,admin_item_path(item.id) %>
          <%= item.price.to_s(:delimited) %>
          <% if item.is_active %><%# is_activeの情報を取得して在庫があるかチェック %>
               <b class="text-success">
