@@ -1,1 +1,33 @@
-<h1>商品一覧画面</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"style="margin-top: 50px; text-align: center;">
+          
+         <button type="button" class="btn btn-dark w-100 btn-lg">ジャンル検索</button>
+        <% @genres.each do |genre| %>
+          <div>
+            <%= link_to genre.name, public_genre_path(genre.id),class: "btn btn-outline-dark w-100" %>
+          </div>
+        <% end %>
+          
+        </div>
+           <div class="col-md-10" style="margin-top: 50px;">
+              <h4 class="border-bottom">商品一覧  　<span style="font-size:20px;">(全<span style="font-size:25px;"><%= @items_all.count %></span>件)</span></h4>
+              <div class="d-flex flex-wrap">
+              <% @items.each do |item| %>
+               <div class ="item_container px-5 py-5" style = "width: 25%">
+                <%#= link_to public_item_path(item.id) do %>
+                  <%#= image_tag item.get_image, size: '150x150' %>
+                <%# end %>
+                  <p><%= link_to item.name,public_item_path(item.id)%><br />
+                  税込み <%= (item.add_tax_price.to_s(:delimited)) %>円</p>
+                  </div>
+              <% end %>
+            </div>
+            <div class="col-md-6 offset-md-3">
+              <div class="pagination" style="justify-content: center; margin-top: 30px;">
+                <!--ページネーション入れる-->
+              </div>
+            </div> 
+        </div>
+    </div>
+</div>
