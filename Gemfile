@@ -75,3 +75,5 @@ gem "net-imap"
 
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
+
+gem "enum_help"
