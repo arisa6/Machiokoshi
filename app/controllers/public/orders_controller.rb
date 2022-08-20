@@ -6,8 +6,6 @@ class Public::OrdersController < ApplicationController
  
  def show
   @order = Order.find(params[:id])
-  # @order_details = @order.order_details
-  # @customer = current_customer
  end
  
  def new
@@ -31,7 +29,7 @@ class Public::OrdersController < ApplicationController
     @order_detail.save
    end
     cart_item.destroy_all
-    redirect_to complete_public_orders_path
+    redirect_to confirm_public_orders_path
  end
  
  def confirm
@@ -63,6 +61,6 @@ class Public::OrdersController < ApplicationController
  
  private
   def order_params
-    params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :address, :name, :billing_amount, :postage, :status)
+    params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :amount, :address, :name, :postage, :status)
   end
 end
