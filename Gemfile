@@ -77,3 +77,5 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 
 gem "enum_help"
+
+gem "sassc", "< 2.4.0"

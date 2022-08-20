@@ -69,8 +69,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -143,7 +143,6 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.5.4)
     mustermann (1.1.2)
@@ -165,12 +164,11 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     popper_js (1.16.0)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     puma (3.12.6)
     racc (1.6.0)
     rack (2.2.4)
@@ -229,7 +227,7 @@ GEM
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
+    sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
@@ -292,7 +290,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
@@ -315,6 +313,7 @@ DEPENDENCIES
   refile!
   refile-mini_magick
   sass-rails (>= 6)
+  sassc (< 2.4.0)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
@@ -328,4 +327,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.3
+   2.3.20
