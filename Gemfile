@@ -78,4 +78,4 @@ gem 'jquery-rails'
 
 gem "enum_help"
 
-gem "sassc", "< 2.4.0"
+gem "sassc", "< 2.2.0"
