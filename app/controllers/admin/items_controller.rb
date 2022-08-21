@@ -31,7 +31,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.customer_id = current_user.id
     if @item.update(item_params)
-      redirect_to admin_items_path(@item.id)
+      redirect_to admin_item_path(@item.id)
       flash[:notice] = '商品情報を編集しました'
     else
       render :"show"

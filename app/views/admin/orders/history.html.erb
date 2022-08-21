@@ -1,0 +1,30 @@
+<h1>注文履歴画面</h1>
+
+<div class="container" style="margin-top: 50px;">
+  <div class="shadow p-3 mb-5 bg-white rounded">
+  <div class="row">
+    <div class="col-md-12" style="text-align: left;">
+
+  <h2 class="p-3 mb-2 bg-dark text-white"><%= @customer.last_name %><%= @customer.first_name %>さんの注文履歴</h2>
+  <table class="table">
+    <thead>
+      <tr class="table-secondary">
+        <th>購入日時</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order.id) %></td>
+          <td><%= order.order_details.sum(:amount) %></td>
+          <td><b class="text-success"><%= order.status_i18n %></b></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>
