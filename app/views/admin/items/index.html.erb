@@ -10,21 +10,42 @@
 
   <h1><%= link_to "＋ 新規追加", new_admin_item_path, class: "btn btn-dark rounded-pill" %></h1>
   
-    <% @items.each do |item| %>
-          <% if item.image.attached? %>
-            <%= image_tag item.image, size: "150x150" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "150x150" %>
-          <% end %>
-         <%= item.store %>
-         <%= link_to item.name,admin_item_path(item.id) %>
-         <%= item.price.to_s(:delimited) %>
-         <% if item.is_active %><%# is_activeの情報を取得して在庫があるかチェック %>
-              <b class="text-success">
-                販売中</b><%# trueの時の表示 %>
-         <% else %> <b class="text-secondary">
-                販売停止中</b><%# falseの時の表示 %>
-         <% end %>
-         <%#= link_to "編集する", edit_admin_item_path(@item) %>
-         
-    <% end %>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-10 mx-auto">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">ブランド名</th>
+                <th scope="col">商品名</th>
+                <th scope="col">価格</th>
+                <th scope="col">ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items.each do |item| %>
+               <tr>
+                <td><% if item.image.attached? %>
+                    <%= image_tag item.image, size: "150x150" %>
+                    <% else %>
+                    <%= image_tag 'no_image', size: "150x150" %>
+                    <% end %></td>
+                <td><%= item.store %></td>
+                <td><%= link_to item.name,admin_item_path(item.id) %></td>
+                <td><%= item.add_tax_price.to_s(:delimited) %></td>
+                <td><% if item.is_active %>
+                    <%# is_activeの情報を取得して在庫があるかチェック %>
+                    <b class="text-success">
+                        販売中</b><%# trueの時の表示 %>
+                    <% else %> <b class="text-secondary">
+                        販売停止中</b><%# falseの時の表示 %>
+                    <% end %></td>
+              <% end %>
+             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+     <%#= link_to "編集する", edit_admin_item_path(@item.id) %>

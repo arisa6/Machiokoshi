@@ -24,16 +24,24 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
     @item = Item.find(params[:id])
+    @item.customer_id = current_user.id
     if @item.update(item_params)
       redirect_to admin_items_path(@item.id)
       flash[:notice] = '商品情報を編集しました'
     else
       render :"show"
     end
+  end
+  
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to admin_items_path, notice: "商品を削除しました。"
   end
   
   

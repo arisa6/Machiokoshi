@@ -38,7 +38,9 @@ Rails.application.routes.draw do
 
     # get 'public/customers/edit/:id', to: 'public/customers#edit'  
     # patch 'public/customers/edit/:id', to: 'public/customers#update' 会員情報更新未実装
-    resources :items, only:[:index,:show]
+    resources :items, only:[:index,:show] do
+     resource :favorite, only: [:create, :destroy]
+     end
     resources :genres, only:[:show]
 
   end
@@ -54,8 +56,9 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     resources :customers, only:[:index,:show,:edit,:update]
     resources :genres, only:[:index,:create,:edit,:update]
-    resources :items, only:[:index,:new,:create,:show,:edit,:update]
+    resources :items, only:[:index,:new,:create,:show,:edit,:update,:destroy]
     post 'items' => 'items#create'
+    delete 'items/:id'  => 'items#destroy', as: "items_destroy"
   end
 
 end
