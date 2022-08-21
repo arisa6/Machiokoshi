@@ -1,5 +1,5 @@
 <div class="customer_ col1_">
-   <h1 class="common_headline1_">Log in</h1>
+   <h1 class="common_headline1_">ログイン</h1>
 </div>
 
 
@@ -12,12 +12,12 @@
           <tbody>
             <table class="table table-hover">
              <tr>
-               <th><%= f.label :email %></th>
+               <th><i class="fas fa-envelope"><%= f.label :email %></i></th>
                 <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
              </tr>
              
              <tr>
-               <th><%= f.label :password %></th>
+               <th><i class="fas fa-key"><%= f.label :password %></i></th>
                <td><%= f.password_field :password, autocomplete: "current-password" %></td>
              </tr>
              

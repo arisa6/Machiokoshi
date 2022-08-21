@@ -16,11 +16,11 @@ class Item < ApplicationRecord
     validates :is_active, inclusion: { in: [true, false] }
     
     def get_image
-    (image.attached?) ? image : 'no_image.jpg'
+        (image.attached?) ? image : 'no_image.jpg'
     end
   
     def add_tax_price
-    (self.price * 1.10).round
+        (self.price * 1.10).round
     end
     
 end
