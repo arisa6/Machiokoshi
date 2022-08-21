@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 50px;">
+<div class="container">
   <div class="shadow p-3 mb-5 bg-white rounded">
   <div class="row">
     <div class="col-md-3" style="text-align: left;">
@@ -23,8 +23,8 @@
           <tr>
             <td> 税込価格<br> (税抜価格) </td>
             <td>
-              <%= @item.add_tax_price.to_s(:delimited) %>(
-              <%= @item.price.to_s(:delimited) %>)円
+              <%= @item.add_tax_price.to_s(:delimited) %>
+              <%= @item.price.to_s(:delimited) %>円
             </td>
           </tr>
 
@@ -39,8 +39,10 @@
             </td>
           </tr>
           <tr>
-            <td><%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-outline-success" %></td>
-            <td><%= link_to "一覧に戻る", admin_items_path, class: "btn btn-outline-success" %></td>  <%#　なんとなく不便だったのでつけました %>
+            <%# if customer_signed_in? %>　　<!--セレクトショップのため不要-->
+            <td><%= link_to '編集', edit_admin_item_path(@item), class: "btn btn-success" %></td>
+            <td><%= link_to '削除', admin_items_destroy_path(@item), method: :delete, class: "btn btn-danger" %></td>
+            <%# end %>
           </tr> 
       </tbody>
     </table>
