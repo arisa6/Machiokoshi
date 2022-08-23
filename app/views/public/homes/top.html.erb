@@ -3,43 +3,39 @@
     <div class="text-right mr-5 mt-5">
       <%= link_to ' All Item List >', public_items_path ,class: "btn btn-outline-dark"%>
     </div>
+  </div>
+</div>
           
- <body>
-    <div class="swiper-container">
-    <!-- メイン表示部分 -->
-      <div class="swiper-wrapper">
-      <!-- 各スライド -->
-        <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 600%; height: 600%;"></div>
-        <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 600%; height: 600%;"></div>
-        <div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 600%; height: 600%;"></div>
-      </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+   <div class="slide-container">
+    <div class="swiper-container"><!-- メイン表示部分 -->
+          <div class="swiper-wrapper"><!-- 各スライド -->
+            <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 1000%; height: 1000%;"></div>
+            <!--<div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 1000%; height: 1000%;"></div>-->
+            <!--<div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 1000%; height: 1000%;"></div>-->
+          </div>
+      　<div class="swiper-pagination"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js"></script>
-    <script>
-        var mySwiper = new Swiper ('.swiper-container', {
-          loop: true,        //画像のループ
-          effect: 'slide',   //切り替わるときのアニメーション
-          speed: 3000,       //画像の切替スピード
-          autoplay: {        //自動で動かす
-            delay: 1000,
-            disableOnInteraction: true
-          },
-          pagination: {      //ページネーション
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true
-          },
-          navigation: {      //ナビケーション
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-    </script>
-  </body>
+        
+        <script>
+            var mySwiper = new Swiper ('.swiper-container', {
+              loop: true,        //画像のループ
+              autoHeight: true,
+              effect: 'slide',   //切り替わるときのアニメーション
+              speed: 3000,       //画像の切替スピード
+              autoplay: {        //自動で動かす
+                delay: 1000,
+                disableOnInteraction: true
+              },
+              pagination: {      //ページネーション
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true
+              },
+            });
+        </script>
+    </div>
+ 　 </div>
+
 
 <!--<h4>商品を探す</h4>-->
 <!--<select name="pref_name"> <!--インラインブロック要素のため、デフォルトでは文字の長さに応じた幅になる。-->
