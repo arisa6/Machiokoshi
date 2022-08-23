@@ -1,2 +1,28 @@
-<h1>Public::Genres#show</h1>
-<p>Find me in app/views/public/genres/show.html.erb</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-danger" disabled="disabled">ジャンルから選ぶ</button>
+            <% @genres.each do |genre| %>
+                <div>
+                  <%= link_to genre.name, public_genre_path(genre.id) %>
+                </div>
+            <% end %>
+        </div>
+
+        <div class="col-md-10">
+            <%= @genre.name %>
+             全<%= @items.count %>件表示
+                <% @items.each do |item| %>
+                  <%= link_to public_item_path(item.id) do %>
+                  <%= image_tag item.get_image, size: '150x150' %>
+                <% end %>
+              <%= @item.name %>
+              税込み <%#= (item.add_tax_price.to_s(:delimited)) %>円</p>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
+  
