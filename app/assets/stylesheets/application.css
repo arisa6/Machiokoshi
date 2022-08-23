@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+.swiper-container{
+   width: 1000px;
+   height: 400px;
+}
+
+
+ ページネーションの余白 
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 20px 20px;
+}
+/* ページネーションのサイズと色 */
+/*.swiper-pagination-bullet {*/
+/*  background-color: red;*/
+/*  height: 100px;*/
+/*  width: 100px;*/
+/*}*/
+
