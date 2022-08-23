@@ -14,9 +14,8 @@
             <%= @genre.name %>
              全<%= @items.count %>件表示
                 <% @items.each do |item| %>
-                  <%= link_to public_item_path(item.id) do %>
+                  <% link_to public_item_path(item.id) %>
                   <%= image_tag item.get_image, size: '150x150' %>
-                <% end %>
               <%= @item.name %>
               税込み <%#= (item.add_tax_price.to_s(:delimited)) %>円</p>
             <% end %>

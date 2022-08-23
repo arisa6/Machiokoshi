@@ -1,28 +1,23 @@
-<h4 class="border-bottom text-left">マイページ</h4>
-    <table class="table table-borderless">
-        <tr>
-          <th>氏名</th>
-          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-        </tr>
-        <tr>
-            <th>ﾌﾘｶﾞﾅ</th>
-            <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-        </tr>
-        <tr>
-            <th>郵便番号</th>
-            <td><%= @customer.postal_code %></td>
-        </tr>
-        <tr>
-            <th>住所</th>
-            <td><%= @customer.address %></td>
-        </tr>
-        <tr>
-            <th>電話番号</th>
-            <td><%= @customer.phone_number %></td>
-        </tr>
-        <tr>
-            <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
-        </tr>
-    </table> 
-   <%= link_to "編集する", edit_public_customer_path(params[:id]), class: "btn btn-outline-success w-75" %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+            <h4 class="border-bottom text-left">マイページ</h4>
+              <table class="table table-borderless">
+                <tr>
+                  <th>会員情報変更</th>
+                  <td><%= link_to "編集する", edit_public_customer_path(params[:id]) %></td>
+                </tr>
+                <tr>
+                  <th>購入履歴</th>
+                  <td><%= link_to "編集する", admin_order_history_path(params[:id]) %></td>
+                </tr>
+                <tr>
+                  <th>お気に入り商品</th>
+                  <!--<td><%#= link_to "編集する", admin_order_history_path(params[:id]) %></td>-->
+                </tr>
+                
+        </div>
+        <!--<div class=""></div>-->
+    </div>
+</div>
+
