@@ -3,6 +3,8 @@
         <%= link_to root_path, class: "navbar-item" do %>  <!--文字にリンクを埋め込む実装コード-->
           <h1 class="title is-4" style="font-family: cursive;">Machiokoshi</h1>
         <% end %>
+         <li class="list-unstyled"><%= current_customer.last_name %>様<br>
+         いつもご利用いただきありがとうございます。</li>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
           <span></span>
@@ -12,8 +14,6 @@
     
       <% if customer_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
-          
-          
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
@@ -32,7 +32,7 @@
                 </p>
                 <p class="control">
                   <i class="fas fa-sign-out-alt">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "button is-warning is-light" %>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "button is-warning is-light" %>
                   </i>
                 </p>
             </div>

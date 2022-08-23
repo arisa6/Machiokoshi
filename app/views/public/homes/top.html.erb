@@ -1,86 +1,48 @@
 <div class="col-md-10 offset-md-1">
   <div class="top"style="margin-top: 30px;">
     <div class="text-right mr-5 mt-5">
-      <%= link_to '　All Item List　>', public_items_path ,class: "btn btn-outline-dark"%>
+      <%= link_to ' All Item List >', public_items_path ,class: "btn btn-outline-dark"%>
+    </div>
+          
+ <body>
+    <div class="swiper-container">
+    <!-- メイン表示部分 -->
+      <div class="swiper-wrapper">
+      <!-- 各スライド -->
+        <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 600%; height: 600%;"></div>
+        <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 600%; height: 600%;"></div>
+        <div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 600%; height: 600%;"></div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
     </div>
 
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-md-8 offset-md-2"style="margin-top: 100px;">
-    <div class="text">
-      <h6 class=my-5>
-        生産者と消費者を直接つなぐサイト<br>
-       ・野菜農家や果物農家さん×旬の食材が食べたい消費者<br>
-       ・あまり知られていない特産品を広めたい生産者×マイナー好きな消費者<br>
-       ・観光地を盛り上げたい地元民×行ったことのない場所へ旅したい消費者
-      </h6>
-    </div>      
-  </div>
-</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js"></script>
+    <script>
+        var mySwiper = new Swiper ('.swiper-container', {
+          loop: true,        //画像のループ
+          effect: 'slide',   //切り替わるときのアニメーション
+          speed: 3000,       //画像の切替スピード
+          autoplay: {        //自動で動かす
+            delay: 1000,
+            disableOnInteraction: true
+          },
+          pagination: {      //ページネーション
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true
+          },
+          navigation: {      //ナビケーション
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+    </script>
+  </body>
 
 <!--<h4>商品を探す</h4>-->
 <!--<select name="pref_name"> <!--インラインブロック要素のため、デフォルトでは文字の長さに応じた幅になる。-->
-<!--<option value="" selected>都道府県から探す</option>-->
-<!--<option value="北海道">北海道</option>-->
-<!--<option value="青森県">青森県</option>-->
-<!--<option value="岩手県">岩手県</option>-->
-<!--<option value="宮城県">宮城県</option>-->
-<!--<option value="秋田県">秋田県</option>-->
-<!--<option value="山形県">山形県</option>-->
-<!--<option value="福島県">福島県</option>-->
-<!--<option value="茨城県">茨城県</option>-->
-<!--<option value="栃木県">栃木県</option>-->
-<!--<option value="群馬県">群馬県</option>-->
-<!--<option value="埼玉県">埼玉県</option>-->
-<!--<option value="千葉県">千葉県</option>-->
-<!--<option value="東京都">東京都</option>-->
-<!--<option value="神奈川県">神奈川県</option>-->
-<!--<option value="新潟県">新潟県</option>-->
-<!--<option value="富山県">富山県</option>-->
-<!--<option value="石川県">石川県</option>-->
-<!--<option value="福井県">福井県</option>-->
-<!--<option value="山梨県">山梨県</option>-->
-<!--<option value="長野県">長野県</option>-->
-<!--<option value="岐阜県">岐阜県</option>-->
-<!--<option value="静岡県">静岡県</option>-->
-<!--<option value="愛知県">愛知県</option>-->
-<!--<option value="三重県">三重県</option>-->
-<!--<option value="滋賀県">滋賀県</option>-->
-<!--<option value="京都府">京都府</option>-->
-<!--<option value="大阪府">大阪府</option>-->
-<!--<option value="兵庫県">兵庫県</option>-->
-<!--<option value="奈良県">奈良県</option>-->
-<!--<option value="和歌山県">和歌山県</option>-->
-<!--<option value="鳥取県">鳥取県</option>-->
-<!--<option value="島根県">島根県</option>-->
-<!--<option value="岡山県">岡山県</option>-->
-<!--<option value="広島県">広島県</option>-->
-<!--<option value="山口県">山口県</option>-->
-<!--<option value="徳島県">徳島県</option>-->
-<!--<option value="香川県">香川県</option>-->
-<!--<option value="愛媛県">愛媛県</option>-->
-<!--<option value="高知県">高知県</option>-->
-<!--<option value="福岡県">福岡県</option>-->
-<!--<option value="佐賀県">佐賀県</option>-->
-<!--<option value="長崎県">長崎県</option>-->
-<!--<option value="熊本県">熊本県</option>-->
-<!--<option value="大分県">大分県</option>-->
-<!--<option value="宮崎県">宮崎県</option>-->
-<!--<option value="鹿児島県">鹿児島県</option>-->
-<!--<option value="沖縄県">沖縄県</option>-->
-<!--</select>-->
 
 
-<!--<div>-->
-<!--  <select name="category">-->
-<!--  <option value="" selected>カテゴリから探す</option>-->
-<!--  <option value="野菜">野菜</option>-->
-<!--  <option value="果物">果物</option>-->
-<!--  <option value="お米">お米</option>-->
-<!--  <option value="お魚">お魚</option>-->
-<!--  <option value="お肉">お肉</option>-->
-<!--  <option value="その他">その他</option>-->
-<!--</div>-->
+
