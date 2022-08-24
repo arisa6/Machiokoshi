@@ -10,26 +10,30 @@ class Public::OrdersController < ApplicationController
  
  def new
   @customer = current_customer
+  @cart_items = current_customer.cart_items
   @order = Order.new
   @addresses = current_customer.address
  end
  
  def create
-  @order = Order.new(order_params)
-  cart_item = current_customer.cart_item.all
-  @order.postage = 800
-  @order.save
-  @order.current_id = current_customer.id
-   current_customer.cart_item.each do |cart_item|
-    @order_detail = OrderDetail.new
-    @order_detail.order_id = @order.id
-    @order_detail.item_id = cart_item.item_id
-    @order_detail.price = cart_item.item.price
-    @order_detail.amount = cart_item.amount
-    @order_detail.save
+  cart_items = current_customer.cart_items.all #ログインユーザーのカートアイテムを全て取り出す。
+  @order = current_customer.orders.new(order_params) #紐づけされて値を @order にいれる
+  # @order.postage = 800
+   if @order.save
+   cart_items.each do |cart|
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart.item_id
+      order_detail.order_id = @order.id
+      order_detail.amount = cart.amount
+      order_detail.price = cart.item.price
+      order_detail.save
    end
-    cart_item.destroy_all
-    redirect_to confirm_public_orders_path
+    redirect_to complete_public_orders_path
+    cart_items.destroy_all
+   else
+    @order = Order.new(order_params)
+    render :new
+   end
  end
  
  def confirm
@@ -38,17 +42,17 @@ class Public::OrdersController < ApplicationController
   @order = Order.new(order_params)
   @total = 0
   @order.customer_id =current_customer.id
-    if params[:order][:select_address]=="0"
+    if params[:order][:address]=="0"
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
        @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:select_address]=="1"
+    elsif params[:order][:address]=="1"
        @address= Address.find(params[:order][:address_id])
        @order.postal_code = @address.postal_code
        @order.address = @address.address
        @order.name = @address.name
        @order.payment_method = params[:order][:payment_method]
-    elsif params[:order][:select_address] = "2"
+    elsif params[:order][:address] = "2"
        @order.postal_code = params[:order][:postal_code]
        @order.address = params[:order][:address]
        @order.name = params[:order][:name]
@@ -63,4 +67,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :amount, :address, :name, :postage, :status)
   end
+
 end
