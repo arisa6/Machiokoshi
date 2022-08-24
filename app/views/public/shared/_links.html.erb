@@ -1,9 +1,12 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+ <button type="button" class="btn btn-outline-dark">
+  <%= link_to "戻る", new_session_path(resource_name) %></button><br />
 <% end %>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end %>
+<%#- if devise_mapping.registerable? && controller_name != 'registrations' %>
+ <!--<button type="button" class="btn btn-outline-dark">-->
+  <%#= link_to "新規登録", new_registration_path(resource_name) %>
+  <!--</button><br />-->
+<%# end %>
 
 <!--削除内容はカリキュラムに記載されている-->

@@ -1,10 +1,10 @@
-<div class="customer_ col1_">
-   <h2 class="p-3 mb-2 bg-dark text-white text-left">New user</h2>
+<div class="customer_ col1_" style="margin-top: 50px; margin-bottom: 20px; text-align: center;">
+   <h3>会員登録</h3>
 </div>
 
 <div class="container">
-  <div class="columns is-centered">
-    <div class="column is-5">
+  <div class="row">
+    <div class="col-md-6">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <table class="formdetail_ customer_">
@@ -57,11 +57,13 @@
             
             </tbody>
         </table>
-        <div class="actions" style="margin-top: 20px;">
-            <button class="btn btn-outline-success btn-lg w-100" type="submit">新規登録</button>
-        </div>
         <% end %>
-              <%= render "public/shared/links" %>
+        <div class="col-md-6">
+          <div class="actions" style="margin-top: 20px;">
+            <button type="submit" class="btn btn-outline-danger">新規登録</button>
+            <%= render "public/shared/links" %>
+          </div>
+        </div>
     </div>
   </div>
 </div>
