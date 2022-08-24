@@ -1,28 +1,27 @@
-<div class="customer_ col1_">
-   <h1 class="common_headline1_">ログイン</h1>
+<div class="customer_ col1_" style="margin-top: 50px; margin-bottom: 50px; text-align: center;">
+   <h3>ログイン</h3>
 </div>
 
 
 <div class="container">
-  <div class="columns is-centered">
-    <div class="column is-5">
-        <table class="formdetail_ customer_">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-          <tbody>
-            <table class="table table-hover">
+    <div class="row">
+      <div class="col-md-6">
+        <h10>会員登録が済んでいる方</10>
+          <table class="formdetail_ customer_">
+           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+             <%= render "public/shared/error_messages", resource: resource %>
+         <tbody>
+           <table class="table">
              <tr>
-               <th><i class="fas fa-envelope"><%= f.label :email %></i></th>
+               <th><i class="bi bi-envelope"><%= f.label :email %></i></th>
                 <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
              </tr>
-             
              <tr>
-               <th><i class="fas fa-key"><%= f.label :password %></i></th>
+               <th><i class="bi bi-key"><%= f.label :password %></i></th>
                <td><%= f.password_field :password, autocomplete: "current-password" %></td>
              </tr>
-             
-            </tbody>
-        </table>
+            </table>
+         </tbody>
         
              <% if devise_mapping.rememberable? %>
               <div class="field">
@@ -30,9 +29,27 @@
                 <%= f.label :パスワードを登録する %>
               </div>
              <% end %>
-             
-              <%= f.submit "ログイン", class: "btn btn-primary"  %>
+             <div class="actions" style="margin-top: 20px;">
+                <button type="submit" class="btn btn-outline-danger">ログイン</button>
+             </div>
         <% end %>
+        </div>
+            <div class="col-md-6">
+              <h10>まだ会員登録されていない方</h10>
+              <div class="actions" style="margin-top: 40px;">
+                  <h5>会員登録の３つのメリット</h5>
+                      <p>
+                        １．商品情報をいち早くお届け<br>
+                        ２．簡単にできます<br>
+                        ３．おいしい特産物で食品ロスの削減に貢献
+                      </p>
+              </div>
+              <div class="actions" style="margin-top: 40px;">
+                   <button type="button" class="btn btn-danger">
+                     <%= link_to "新規会員登録", new_customer_registration_path %>
+                   </button>
+              </div>
+            </div>
               <%= render "public/shared/links" %>
     </div>
   </div>
