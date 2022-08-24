@@ -1,23 +1,12 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-            <h4 class="border-bottom text-left">マイページ</h4>
-              <table class="table table-borderless">
-                <tr>
-                  <th>会員情報変更</th>
-                  <td><%= link_to "編集する", edit_public_customer_path(params[:id]) %></td>
-                </tr>
-                <tr>
-                  <th>購入履歴</th>
-                  <td><%= link_to "編集する", admin_order_history_path(params[:id]) %></td>
-                </tr>
-                <tr>
-                  <th>お気に入り商品</th>
-                  <!--<td><%#= link_to "編集する", admin_order_history_path(params[:id]) %></td>-->
-                </tr>
-                
-        </div>
-        <!--<div class=""></div>-->
+  <div class="row">
+    <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+      <h2 class="border-bottom">マイページ</h2>
     </div>
+    <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+      <p><%= link_to "会員情報変更", edit_public_customer_path(params[:id]), class: "btn btn-danger" %></p><br>
+      <p><%= link_to "購入履歴", admin_order_history_path(params[:id]), class: "btn btn-danger" %></p><br>
+      <p><%= link_to "登録済み住所",public_addresses_path(params[:id]) , class: "btn btn-danger" %></p>
+    </div>
+  </div>
 </div>
-
