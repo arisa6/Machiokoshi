@@ -1,7 +1,9 @@
 class Public::OrdersController < ApplicationController
+ 
  def index
-  @orders = Order.all
-  @order = current_customer.orders
+  @orders = current_customer.orders.all
+  # @orders = Order.all
+  # @order = current_customer.orders
  end
  
  def show
@@ -39,22 +41,29 @@ class Public::OrdersController < ApplicationController
  end
  
  def confirm
+  @order = Order.new(order_params) # newから渡ってきたデータを @orderにいれる
+  # @order.postage = 800 #送料
   @customer = current_customer
-  @cart_items = CartItem.all
-  @order = Order.new(order_params)
-  @total = 0
+  # @total = 0 #商品の合計をだすための計算
+  @cart_items = CartItem.all  #カートアイテムの情報を取り出すためのもの
   @order.customer_id =current_customer.id
-    if params[:order][:address]=="0"
+  
+    if params[:order][:address_id]=="0"
        @order.postal_code = current_customer.postal_code
        @order.address = current_customer.address
        @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address]=="1"
-       @address= Address.find(params[:order][:address_id])
-       @order.postal_code = @address.postal_code
-       @order.address = @address.address
-       @order.name = @address.name
+       
+    elsif params[:order][:address_id]=="1"
+      if Address.find(params[:order][:address_id])
+       @order.postal_code = Address.find(params[:order][:address_id]).postal_code
+       @order.address =Address.find(params[:order][:address_id]).address
+       @order.name = Address.find(params[:order][:address_id]).name
        @order.payment_method = params[:order][:payment_method]
-    elsif params[:order][:address] = "2"
+      else
+        render :new
+      end
+      
+    elsif params[:order][:address_id] = "2"
        @order.postal_code = params[:order][:postal_code]
        @order.address = params[:order][:address]
        @order.name = params[:order][:name]
@@ -66,6 +75,11 @@ class Public::OrdersController < ApplicationController
  
  
  private
+ 
+  def address_params
+    params.require(:order).permit(:name, :address,:postal_code)
+  end
+  
   def order_params
     params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :amount, :address, :name, :postage, :status)
   end

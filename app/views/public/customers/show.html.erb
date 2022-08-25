@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <p><%= link_to "会員情報変更", edit_public_customer_path(params[:id]), class: "btn btn-danger" %></p><br>
-      <p><%= link_to "購入履歴", admin_order_history_path(params[:id]), class: "btn btn-danger" %></p><br>
+      <p><%= link_to "購入履歴", public_orders_path(params[:id]), class: "btn btn-danger" %></p><br>
       <p><%= link_to "登録済み住所",public_addresses_path(params[:id]) , class: "btn btn-danger" %></p>
     </div>
   </div>

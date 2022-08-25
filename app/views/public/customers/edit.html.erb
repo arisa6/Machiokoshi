@@ -46,9 +46,10 @@
                 <td colspan="2"><%= f.text_field :email, :size=>"40",autofocus: true, autocomplete: "email" %></td>
             </tr>
           </table>
-            <% end %>
-           <%= link_to "編集内容を保存する", public_customer_path, class: "btn btn-danger"%>
+           <%#= link_to "編集内容を保存する", public_customer_path, class: "btn btn-danger"%>
+           <%= f.submit "編集内容を保存する", class: "btn btn-danger" %>
            <%= link_to "退会する", unsubscribe_public_customers_path, class: "btn btn-outline-danger" %>
+            <% end %>
       </div>
     </div>
   </div>
