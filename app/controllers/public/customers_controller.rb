@@ -1,29 +1,33 @@
 class Public::CustomersController < ApplicationController
   
     def show
-        # @customers = current_customer
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
+        # @customer = Customer.find(params[:id])
     end
     
     def edit
-        # @customers = current_customer 
-        @customer = Customer.find(params[:id])
+        @customer = current_customer 
+        # @customer = Customer.find(params[:id])
     end
     
     def update
-        # @customer = current_customer
-        @customer = Customer.find(params[:id])
-        if @customer.update_attributes(customer_params)
-          redirect_to public_customer_path(current_customer)
-        else
-          render "edit"
-        end
+        @customer = current_customer
+       if @customer.update(customer_params)
+        redirect_to public_customer_path(current_customer)
+       else
+        render :edit
+       end
     end
     
     def unsubscribe
     end
     
     def withdrawl #(退会)
+      @customer = Customer.find(current_customer[:id])
+      # is_deletedカラムをtrueに変更することで削除フラグを
+      @customer.update(is_deleted: true)
+      reset_session
+      redirect_to root_path
     end
     
     

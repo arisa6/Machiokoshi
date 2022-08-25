@@ -1,27 +1,38 @@
-
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            <button type="button" class="btn btn-outline-danger" disabled="disabled">ジャンルから選ぶ</button>
-            <% @genres.each do |genre| %>
-                <div>
-                  <%= link_to genre.name, public_genre_path(genre.id) %>
-                </div>
-            <% end %>
+        <div class="col-md-2" style="margin-top:30px; ">
+          <button type="button" class="btn btn-outline-danger" disabled="disabled">ジャンルから選ぶ</button>
+           <% @genres.each do |genre| %>
+             <%= link_to genre.name, public_genre_path(genre.id),class: "btn btn-outline-dark w-100" %>
+           <% end %>
         </div>
-
-        <div class="col-md-10">
-            <%= @genre.name %>
-             全<%= @items.count %>件表示
+          <div class="col-md-10">
+              <h4 class="border-bottom" style="text-align: center;margin-top:30px; "><%= @genre.name %>商品一覧(全
+                <span style="font-size:25px;"><%= @items_all.count %></span>件)</h4>
                 <% @items.each do |item| %>
-                  <% link_to public_item_path(item.id) %>
-                  <%= image_tag item.get_image, size: '150x150' %>
-              <%= @item.name %>
-              税込み <%#= (item.add_tax_price.to_s(:delimited)) %>円</p>
-            <% end %>
-        </div>
+                   <% link_to public_item_path(item.id) %>
+                     <%= image_tag item.get_image, size: '150x150' %><br>
+                     <%= link_to item.name,public_item_path(item.id)%>
+                     
+                  <% if current_customer.already_favorited?(item) %>
+                      <%= link_to public_item_favorite_path(item), method: :delete do %>
+                       <i class="fas fa-heart"></i>
+                      <% end %>
+                       <%= item.favorites.count %>
+                  <% else %>
+                       <%= link_to public_item_favorite_path(item), method: :post do %>
+                       <i class="far fa-heart"></i>
+                       <% end %>
+                       <%= item.favorites.count %>
+                  <% end %><br>
+                  税込み <%= (item.add_tax_price.to_s(:delimited)) %>円</p>
+                
+                <% end %>
+          </div>
     </div>
 </div>
+
+
 
 
   

@@ -35,15 +35,12 @@
               <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
                <p class="border-bottom">支払方法</p>
                  <small><%= form_with model: @order,url:confirm_public_orders_path,local: true do |f| %>
-                  <div class="col-md-10 ms-1" style="text-align: left;">
                     <%= f.radio_button :payment_method, :"credit_card" %>
                      <%= f.label :payment_method, "クレジットカード", {value: :"0"}  %></br>
                      <%= f.radio_button :payment_method, :"transfer" %>
                     <%= f.label :payment_method, "銀行振込", {value: :"1"}  %><br>
-                  </div>
-            </div>
-            <div class="row">
-              <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+                  <% end %>
+           
                  <%= f.submit "注文内容を確認する", class: "btn btn-outline-danger" %></small><br>
                  <%= link_to "おかいものかごに戻る", public_cart_items_path %>
               </div>

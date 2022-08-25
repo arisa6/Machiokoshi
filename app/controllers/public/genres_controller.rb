@@ -4,6 +4,7 @@ class Public::GenresController < ApplicationController
     @items = @genre.items.where(is_active: true) #where条件に合致するオブジェクトを配列として取り出す
     @genres = Genre.all
     @item = Item.find(params[:id])
+    @items_all = Item.all.where(is_active: true)
   end
   
   
