@@ -1,10 +1,3 @@
-<div class="col-md-10 offset-md-1">
-  <div class="top" style="margin-top: 30px;">
-    <div class="text-right mr-5 mt-5">
-      <%= link_to ' All Item List >', public_items_path ,class: "btn btn-outline-dark"%>
-    </div>
-  </div>
-</div>
 
 <div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
   <div class="slide-container">
@@ -36,9 +29,20 @@
   </div>
  </div>
 
-
-<!--<h4>商品を探す</h4>-->
-<!--<select name="pref_name"> <!--インラインブロック要素のため、デフォルトでは文字の長さに応じた幅になる。-->
-
+<div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
+  <h4><strong class="border-bottom">新着商品</strong></h4>
+    <% @item.each do |item| %>
+      <div class = "col-sm-6 col-md-3 col-lg-3">
+        <%= link_to public_item_path(item.id) do %>
+          <%= image_tag item.image, size: "150x100" %><br>
+          <% end %>
+        <%= item.name %><br>
+        ￥<%= item.price.to_s(:delimited) %><br>
+      </div>
+    <% end %>
+    <div class = "row text-right float-right pull-right test-box">
+      <%= link_to '全ての商品を見る＞', public_items_path, class: "btn btn-outline-danger" %>
+    </div>
+</div>
 
 

@@ -1,12 +1,17 @@
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-2"style="margin-top: 50px; text-align: center;">
-            <p><%= link_to "会員情報一覧", admin_customers_path %></p>
-            <p><%= link_to "登録商品一覧", admin_items_path %></p>
-            <p><%= link_to "ジャンルの修正・追加", admin_genres_path %></p>
-            <%=%>
-            <%=%>
-            <%=%>
+  <div class="row" style="text-align: center;">
+    <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+      <h1 class="border-bottom">管理者画面</h1>
+    </div>
+        <div class="col-md-5 offset-1" style="margin-top:30px; ">
+           <h4 class="border-bottom">会員様について</h4>
+           <p><%= link_to "会員情報一覧", admin_customers_path %></p>
+        </div>
+        <div class="col-md-5" style="margin-top:30px; ">
+           <h4 class="border-bottom">商品について</h4>
+             <p><%= link_to "登録商品一覧", admin_items_path %></p>
+           <p><%= link_to "ジャンルの修正・追加", admin_genres_path %></p>
         </div>
     </div>
 </div>
