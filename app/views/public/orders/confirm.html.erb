@@ -1,13 +1,14 @@
 <div class="container">
     <div class="row">
       <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-        <strong class="border-bottom">注文内容の確認</strong>
+        <h4><strong class="border-bottom">注文内容の確認</strong></h4>
       </div>
       
       <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
         <table class="table">
           <thead class="table">
             <tr>
+              <th></th>
               <th>商品名</th>
                 <th>税込価格</th>
                 <th>数量</th>
@@ -17,20 +18,29 @@
             <tbody>
               <% @cart_items.each do |cart_item| %>
                 <tr>
-                  <td><%= cart_item.item.name %></td>
-                    <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-                    <td><%= cart_item.amount %></td>
-                  <td>￥<%= cart_item.subtotal.to_s(:delimited) %></td>
-                </tr>
+                    <th scope="row"><%= image_tag cart_item.item.get_image,size:"50x50" %></th>
+                      <td><%= cart_item.item.name %></td>
+                        <td><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+                      <td><%= cart_item.amount %></td>
+                    <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
+                  </tr>
               <% end %>
             </tbody>
         </table>
       </div>
     </div>
+    
+    <div class="col-md-10 offset-1" style="text-align: right;margin-top:30px; ">
+      <h4 class="border-bottom">合計金額
+        <% @cart_items.each do |cart_item| %>
+          <%= @total + @order_postage += (cart_item.item.add_tax_price)* cart_item.amount %>円
+        <% end %></h4>
+    </div>
+    
       
       <div class="row">
         <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-          <strong class="border-bottom">配送内容の確認</strong>
+          <h4><strong class="border-bottom">配送内容の確認</strong></h4>
         </div>
         <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
           <table class="table">
@@ -39,20 +49,16 @@
                 <th>支払方法</th>
                   <th>送料</th>
                   <th>お届け先</th>
-                <th>請求額</th>
+                  <th></th>
               </tr>
             </thead> 
-              <% @cart_items.each do |cart_item| %>
-               <% @total +=  (cart_item.item.add_tax_price)* cart_item.amount %>
-              <% end %>
+              
           <tbody>
                 <tr>
                   <td><%= @order.payment_method  %></td>
                     <td>￥800</td>
-                     <td>〒<%= @customer.postal_code %></br>
-                      <%= @customer.address %></br>
+                     <td>〒<%= @customer.postal_code %><%= @customer.address %></br>
                      <%= current_customer.last_name %>&nbsp;<%= current_customer.first_name %>&emsp;様</td>
-                    <td>￥<%= (@total + 800).to_s(:delimited) %></td>
                 </tr>
             </tbody>
           </table>

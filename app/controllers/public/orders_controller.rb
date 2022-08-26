@@ -41,12 +41,15 @@ class Public::OrdersController < ApplicationController
  end
  
  def confirm
-  @order = Order.new(order_params) # newから渡ってきたデータを @orderにいれる
-  # @order.postage = 800 #送料
-  @customer = current_customer
-  # @total = 0 #商品の合計をだすための計算
-  @cart_items = CartItem.all  #カートアイテムの情報を取り出すためのもの
-  @order.customer_id =current_customer.id
+       @cart_items = current_customer.cart_items #カートアイテムの情報を取り出すためのもの
+       @total = 0 #商品の合計をだすための計算
+       @customer = current_customer
+       # @orders = current_customer.orders.new
+       @cart_item = current_customer.cart_items.all #カートアイテムの情報を取り出すためのもの
+       @order = Order.new(order_params)
+       @order_postage = 800 #送料
+       # @order.name = current_customer.first_name + current_customer.last_name
+       @order.customer_id =current_customer.id
   
     if params[:order][:address_id]=="0"
        @order.postal_code = current_customer.postal_code

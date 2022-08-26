@@ -1,45 +1,49 @@
-<h1>商品詳細画面</h1>
-
-<div class='col-md-3 'style="text-align: center;margin-top: 50px;">
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+      <h2 class="border-bottom">商品詳細</h2>
+    </div>
+    
+      <div class="col-md-5 offset-1" style="margin-top:30px; ">
         <% if @item.image.attached? %>
-          <%= image_tag @item.image, size: "150x150" %>
+          <%= image_tag @item.image, size: "400x400" %>
         <% else %>
-          <%= image_tag 'no_image', size: "150x150" %>
+          <%= image_tag 'no_image', size: "400x400" %>
         <% end %>
-</div>
-      <div class="col-md-6 "style="margin-top: 50px;">
-      
-          <h3 class="font-weight-bold my-5"><%= @item.name %>
-                    <% if current_customer.already_favorited?(@item) %>
-                        <%= link_to public_item_favorite_path(@item), method: :delete do %>
-                          <i class="fas fa-heart"></i>
-                        <% end %>
-                       <%= @item.favorites.count %>
-                    <% else %>
-                        <%= link_to public_item_favorite_path(@item), method: :post do %>
-                          <i class="far fa-heart"></i>
-                        <% end %>
-                        <%= @item.favorites.count %>
-                    <% end %></h3>
-          <p><%= @item.introduction %></p>
-          <h3 class="font-weight-bold mt-5">￥<%= @item.add_tax_price.to_s(:delimited) %><span style="font-size:15px;">(税込)</span></h3>
-          <p>￥<%= @item.price.to_s(:delimited) %>(税抜)</p>
-          <%# カート機能 %>  
-          <%= form_with model: @cart_item,url: public_cart_items_path, method: :post do |f| %>
-            <%# 会員であるか確認%>
-            <% if customer_signed_in? %>
-              <%# 商品情報の値を送る %>
-              <%= f.hidden_field :item_id, :value =>@item.id %>
-              <div class="cart_item" style="text-align: right;">
-                <%# 個数入力フォーム %>
-                <span style="font-size:20px;">
-                  <%= f.select :amount, *[1..10] %>　
-                </span>
-                <%= f.submit "カートに入れる", class:"btn btn-outline-success btn-lg" %>
+      </div>
+        <div class="col-md-5 " style="margin-top:30px; ">
+          <small><%= @item.store %></small><br>
+          <h6 class="font-weight-bold"><%= @item.name %></h6>
+            <% if current_customer.already_favorited?(@item) %>
+                <%= link_to public_item_favorite_path(@item), method: :delete do %>
+                  <i class="bi bi-suit-heart-fill"></i>
+                    <% end %>
+                  <%= @item.favorites.count %>
+              <% else %>
+                  <%= link_to public_item_favorite_path(@item), method: :post do %>
+                    お気に入り<i class="bi bi-suit-heart"></i>
+                  <% end %>
+                  <%= @item.favorites.count %></p>
+              <% end %>
+            <p><%= @item.add_tax_price.to_s(:delimited) %><span style="font-size:5px;">円(税込)</span></p>
+            <small><%= @item.introduction %></small>
+        </div>
+        
+        <div class="col-md-10 " style="text-align: right;margin-top:30px; ">
+          <%= form_with model: @cart_item,url: public_cart_items_path, method: :post do |f| %>  <!--カート機能-->
+            <% if customer_signed_in? %>  <!--会員であるかを確認-->
+              <%= f.hidden_field :item_id, :value =>@item.id %>  <!--商品情報の値を送る-->
+              <div class="cart_item">
+                <span style="font-size:20px;"><%= f.select :amount, *[1..10] %></span> <!--個数入力フォーム-->
+                <%= f.submit "おかいものかごに入れる", class:"btn btn-outline-danger btn-lg" %>
               </div>
             <% else %>
               <div class="button" style="text-align: right;">
-                <%= link_to "購入するには会員登録が必要です",  new_customer_registration_path,class: "btn btn-outline-primary" %>
+                <%= link_to "購入するには会員登録が必要です",  new_customer_registration_path,class: "btn btn-outline-danger" %>
               </div>
-            <% end %>
+            <% end %> 
           <% end %>
+        </div>
+  </div>
+</div>
+          
