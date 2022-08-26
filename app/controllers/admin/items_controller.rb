@@ -2,22 +2,19 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin! (ログイン済ユーザーのみにアクセスを許可する)
   
   def index
-    @items = Item.all
+    @item = Item.page(params[:page]).per(10)
   end
 
   def new
     @item = Item.new
   end
-
-  def create
+  
+   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to admin_item_path(@item)
-      flash[:notice] = '新しい商品を登録しました。'
-    else
-    render "new"
-    end
-  end
+    @item.save
+    redirect_to admin_items_path(@item)
+    # flash[:notice] = '新しい商品を登録しました。'
+   end
 
   def show
     @item = Item.find(params[:id])
@@ -29,14 +26,14 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.customer_id = current_user.id
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
       flash[:notice] = '商品情報を編集しました'
     else
-      render :"show"
+      render :"edit"
     end
   end
+  
   
   def destroy
     item = Item.find(params[:id])
@@ -46,7 +43,7 @@ class Admin::ItemsController < ApplicationController
   
   
   def item_params
-  	params.permit(:name, :introduction, :genre_id, :price, :is_active, :store, :image)
+  	params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :store, :image)
   end
 
 end

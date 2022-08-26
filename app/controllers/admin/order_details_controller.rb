@@ -10,7 +10,7 @@ class Admin::OrderDetailsController < ApplicationController
     if @order.order_details.all? { |order_detail| order_detail.making_status == "finish" }
       @order_detail.order.update(status: 3)
     end
-    redirect_to request.referer, notice: "注文詳細の編集に成功しました"
+    redirect_to notice: "注文詳細の編集に成功しました"
   end
 
   

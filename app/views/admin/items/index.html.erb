@@ -1,49 +1,44 @@
-<section class="hero is-success">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        商品一覧
-      </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-1" style="margin-top:30px; ">
+      <h1 class="border-bottom">商品一覧</h1>
     </div>
-  </div>
-</section>
-
-  <h1><%= link_to "＋ 新規追加", new_admin_item_path, class: "btn btn-success" %></h1>
+    <h1 class="col-md-10 offset-1" style="text-align: right;margin-top:30px; "><%= link_to "＋ 新規追加", new_admin_item_path, class: "btn btn-success" %></h1>
   
-    <div class="container mt-2">
-      <div class="row">
-        <div class="col-10">
-          <table class="table table-hover">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">ブランド名</th>
-                <th scope="col">商品名</th>
-                <th scope="col">価格</th>
-                <th scope="col">ステータス</th>
-              </tr>
-            <tbody>
-              <% @items.each do |item| %>
-               <tr>
-                <td><% if item.image.attached? %>
-                    <%= image_tag item.image, size: "100x100" %>
-                    <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
-                    <% end %></td>
-                <td><%= item.store %></td>
-                <td><%= link_to item.name,admin_item_path(item.id) %></td>
-                <td><%= item.add_tax_price.to_s(:delimited) %></td>
-                <td><% if item.is_active %>
-                    <%# is_activeの情報を取得して在庫があるかチェック %>
-                    <b class="text-success">
-                        販売中</b><%# trueの時の表示 %>
-                    <% else %> <b class="text-secondary">
-                        販売停止中</b><%# falseの時の表示 %>
-                    <% end %></td>
-              <% end %>
+     <div class="col-md-10 offset-1" style="text-align: center;">
+       <table class="table table-hover">
+          <tr>
+            <th></th>
+             <th>ブランド名</th>
+              <th>商品名</th>
+             <th>価格</th>
+            <th>ステータス</th>
+          </tr>
+          
+          <tbody>
+            <% @item.each do |item| %>
+             <tr>
+              <td>
+                <% if item.image.attached? %>
+                   <%= image_tag item.image, size: "100x100" %>
+                <% else %>
+                   <%= image_tag 'no_image', size: "100x100" %>
+                <% end %></td>
+              <td><%= item.store %></td>
+              <td><%= link_to item.name,admin_item_path(item.id) %></td>
+              <td><%= item.add_tax_price.to_s(:delimited) %></td>
+              <td><% if item.is_active %>  <!--is_activeの情報を取得して在庫があるかチェック-->
+                  <b class="text-success">
+                      販売中</b><%# trueの時の表示 %>
+                  <% else %> <b class="text-secondary">
+                      販売停止中</b><%# falseの時の表示 %>
+                  <% end %></td>
+                  <td><%= link_to "編集する", edit_admin_item_path(item.id) %></td>
              </tr>
+            <% end %>
             </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-     <%#= link_to "編集する", edit_admin_item_path(@item.id) %>
+       </table>
+     </div>
+  </div>
+</div>
+  

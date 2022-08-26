@@ -49,15 +49,15 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     
-    get "orders/history/:id" => "orders#history", as: "order_history"
     
     resources :makings, only:[:update]
     resources :orders, only:[:edit,:update,:show]
+    get "orders/history/:id" => "orders#history", as: "order_history"
     resources :order_details, only: [:update] 
     resources :customers, only:[:index,:show,:edit,:update]
     resources :genres, only:[:index,:create,:edit,:update]
-    resources :items, only:[:index,:new,:create,:show,:edit,:update,:destroy]
-    post 'items' => 'items#create'
+    resources :items, only:[:index,:show,:new,:create,:edit,:update,:destroy]
+    # post 'items' => 'items#create'
     delete 'items/:id'  => 'items#destroy', as: "items_destroy"
   end
 

@@ -1,6 +1,8 @@
 ja: # 日本語の設定を行う
  enums: # enumの設定を行う
   # 要素の数だけ追加する
+  messages:
+    record_invalid: "バリデーションに失敗しました: %{errors}"
   item:
     is_active:
     sale: "販売中"
