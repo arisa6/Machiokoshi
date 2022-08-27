@@ -1,11 +1,9 @@
-<div class="customer_ col1_" style="margin-top: 50px; margin-bottom: 50px; text-align: center;">
-   <h3>ログイン</h3>
-</div>
-
-
 <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+        <h2 class="border-bottom">ログイン</h2>
+      </div>
+      <div class="col-md-7 offset-1" style="margin-top:30px; ">
         <h10>会員登録が済んでいる方</10>
           <table class="formdetail_ customer_">
            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -29,12 +27,12 @@
                 <%= f.label :パスワードを登録する %>
               </div>
              <% end %>
-             <div class="actions" style="margin-top: 20px;">
-                <button type="submit" class="btn btn-outline-danger">ログイン</button>
+             <div class="actions" style="margin-top: 35px;">
+                <button type="submit" class="btn btn-danger">ログイン</button>
              </div>
         <% end %>
         </div>
-            <div class="col-md-6">
+            <div class="col-md-4" style="margin-top:30px; ">
               <h10><span class="border-bottom">まだ会員登録されていない方</span></h10>
               <div class="actions" style="margin-top: 40px;">
                   <p>会員登録の３つのメリット</p>
@@ -45,7 +43,7 @@
                       </p>
               </div>
               <div class="actions" style="margin-top: 40px;">
-                   <button type="button" class="btn btn-danger">
+                   <button type="button" class="btn btn-outline-danger">
                      <%= link_to "新規会員登録", new_customer_registration_path %>
                    </button>
               </div>
