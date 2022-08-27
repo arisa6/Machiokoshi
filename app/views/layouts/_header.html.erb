@@ -5,15 +5,15 @@
       <ul>
         <% if customer_signed_in? %>
           <li><a href="/">Home</a></li>
-          <li><a href="/public/homes/about">About</a></li>
+          <li><a href="/public/homes/about">About us</a></li>
           <li><a href="/public/customers/:id">My Page</a></li>
           <li><a href="/public/cart_items">Cart</a></li>
-          <li><a href="">Log Out</a></li>
+          <li><a href="">Log out</a></li>
         <% else %>
           <li><a href="/">Home</a></li>
-          <li><a href="/public/homes/about">About</a></li>
+          <li><a href="/public/homes/about">About us</a></li>
           <li><a href="/public/cart_items">Cart</a></li>
-          <li><a href="/customers/sign_in">Log In</a></li>
+          <li><a href="/customers/sign_in">Log in</a></li>
       </ul>
       <% end %>
     </nav>
