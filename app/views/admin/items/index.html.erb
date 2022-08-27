@@ -20,9 +20,9 @@
              <tr>
               <td>
                 <% if item.image.attached? %>
-                   <%= image_tag item.image, size: "100x100" %>
+                   <%= image_tag item.image, size: "80x80" %>
                 <% else %>
-                   <%= image_tag 'no_image', size: "100x100" %>
+                   <%= image_tag 'no_image', size: "80x80" %>
                 <% end %></td>
               <td><%= item.store %></td>
               <td><%= link_to item.name,admin_item_path(item.id) %></td>

@@ -5,6 +5,7 @@ class Public::GenresController < ApplicationController
     @genres = Genre.all
     @item = Item.find(params[:id])
     @items_all = Item.all.where(is_active: true)
+    @item_page = Item.all.page(params[:page]).per(10)  #kaminariインストール後
   end
   
   
