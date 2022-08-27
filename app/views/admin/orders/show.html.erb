@@ -1,29 +1,26 @@
-
 <div class="container">
-  <div class="row">
     <div class="col-md-10 offset-1" style="margin-top:30px; ">
       <h1 class="border-bottom">注文履歴詳細</h1>
-    </div>
-      <br>
-      <div class="col-md-10 offset-1" style="text-align: center;">
-       <table class="table table-hover">
+       <table class="table">
+         <thead>
           <tr>
-            <th></th>
              <th>購入者</th>
-             <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
              <th>配送先</th>
-             <td>〒<%= @order.customer.postal_code %><%= @order.customer.address %><%= @order.name %></td>
              <th>支払い方法</th>
-             <td><%= @order.payment_method_i18n %></td>
              <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+             <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+             <td>〒<%= @order.customer.postal_code %><br><%= @order.customer.address %><%= @order.name %></td>
+             <td><%= @order.payment_method_i18n %></td>
              <td>
               <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
                 <%= f.select :status,["入金待ち","入金確認","製作中","発送準備中","発送済み"] %>
               <%= f.submit "更新" ,class: "btn btn-outline-primary btn-sm" %>
               <% end %>
               </td>
-          </tr>
-        
+        </tbody>
        </table>
       </div>
       
@@ -45,9 +42,10 @@
                   <td><%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %></td>
                     <td><%= order_detail.amount %></td>
                       <td><%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %> </td>
-                    <%= form_with model: order_detail,url: admin_order_detail_path(order_detail) do |f| %>
-                <td><%= f.select :making_status,["着手不可","製作待ち","製作中","製作完了"] %></td>
-              <td><%= f.submit "更新" ,class:"btn btn-outline-primary btn-xs" %></td>
+                    <td>
+                      <%= form_with model: order_detail,url: admin_order_detail_path(order_detail) do |f| %>
+                       <%= f.select :making_status,["着手不可","製作待ち","製作中","製作完了"] %>
+                      <%= f.submit "更新" ,class:"btn btn-outline-primary btn-xs" %></td>
             <% end %>
             </tr>
       <% end %>
@@ -63,12 +61,11 @@
         </tr>
         <tr>
           <th><h6>送料</h6></th>
-          <td><h6><%= @order.postage.to_i %>円</h6></td>
+          <td><h6><%= @order_postage %>円</h6></td>
         </tr>
         <tr class="border-bottom border-top">
           <th><h4>請求金額合計</h4></th>
-          <td><h4><%= @order.billing_amount + @order.postage %>円</h4></td>
+          <td><h4><%= @order.total_payment %>円</h4></td>
         </tr>
       </table>
     </div>
-</div>
