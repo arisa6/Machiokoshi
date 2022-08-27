@@ -2,47 +2,53 @@
 <div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
   <div class="slide-container">
     <div class="swiper-container"><!-- メイン表示部分 -->
-          <div class="swiper-wrapper"><!-- 各スライド -->
-            <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 40%; height: 10%;"></div>
-            <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 40%; height: 10%;"></div>
-            <div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 40%; height: 10%;"></div>
-          </div>
-        
-        <script>
-            var mySwiper = new Swiper ('.swiper-container', {
-              loop: true,        //画像のループ
-              autoHeight: true,
-              effect: 'slide',   //切り替わるときのアニメーション
-              speed: 3000,       //画像の切替スピード
-              autoplay: {        //自動で動かす
-                delay: 1000,
-                disableOnInteraction: true
-              },
-              pagination: {      //ページネーション
-                el: '.swiper-pagination',
-                type: 'bullets',
-                clickable: true
-              },
-            });
-        </script>
+      <div class="swiper-wrapper"><!-- 各スライド -->
+        <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 40%; height: 10%;"></div>
+          <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 40%; height: 10%;"></div>
+        <div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 40%; height: 10%;"></div>
+      </div>
     </div>
   </div>
- </div>
-
-<div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
-  <h4><strong class="border-bottom">新着商品</strong></h4>
-        <% @item.each do |item| %>
-      <div class = "col">
-            <%= link_to public_item_path(item.id) do %>
-              <%= image_tag item.image, size: "150x100" %><br>
-              <% end %>
-            <%= item.name %><br>
-            ￥<%= item.price.to_s(:delimited) %><br>
-      </div>
-        <% end %>
-    <div>
-      <%= link_to '全ての商品を見る＞', public_items_path, class: "btn btn-outline-danger" %>
-    </div>
 </div>
+        
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+      loop: true,        //画像のループ
+      autoHeight: true,
+      effect: 'slide',   //切り替わるときのアニメーション
+      speed: 3000,       //画像の切替スピード
+      autoplay: {        //自動で動かす
+      delay: 1000,
+      disableOnInteraction: true
+  },
+      pagination: {      //ページネーション
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+      },
+  });
+</script>
 
-
+    <div class="col-md" style="text-align: center;margin-top:30px; ">
+      <h4><strong class="border-bottom" >新着商品</strong></h4>
+    </div>
+    
+    <div class="col-md-10 offset-md-1">
+      <div class="top"style="margin-top: 30px;">
+         <div class="d-flex flex-wrap justify-content-around">
+            <% @item.first(4).each do |item| %>
+              <div class ="col-md-3">
+            <ul class="list-inline">
+          <%= link_to public_item_path(item.id) do %>
+            <%= image_tag item.image, size: "160x100" %>
+              <% end %><br>
+                <small><%= item.name %><br>
+              ￥<%= item.price.to_s(:delimited) %><br></small>
+            </ui>
+         </div>
+          <% end %>
+      </div>
+      <div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
+        <%= link_to '全ての商品を見る＞', public_items_path, class: "btn btn-outline-danger" %>
+      </div>
+    </div>

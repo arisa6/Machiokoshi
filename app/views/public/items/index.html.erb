@@ -1,41 +1,42 @@
 <div class="container">
-    <div class="row">
-         <div class="col-md-2" style="text-align: center;margin-top:50px;">
-            <strong class="border-bottom" style="color: red;">商品を探す</strong>
-            
-            <button type="button" class="btn btn-outline-danger" disabled="disabled">ジャンルから選ぶ
+  <div class="row">
+    <div class="col-md-2" style="text-align: center;margin-top:50px;">
+        <strong class="border-bottom" style="color: red;">商品を探す</strong>
+          <button type="button" class="btn btn-outline-danger"disabled="disabled">ジャンルから選ぶ
              <% @genres.each do |genre| %>
               <%= link_to genre.name, public_genre_path(genre.id),class: "btn btn-outline-dark w-100" %>
              <% end %>
          </div></button>
-        <div class="col-md-10" style="text-align: light;margin-top:50px; " >
-            <small class="border-bottom">
+      <div class="col-md-10" style="text-align: light;margin-top:50px; "> <small class="border-bottom">
                 <span style="font-size:25px;"><%= @items_all.count %></span>件あります</small>
-                <% @items.each do |item| %>
-                    <%= link_to public_item_path(item.id) do %>
+        <div class="d-flex flex-wrap justify-content-around">
+          <% @items_all.each do |item| %>
+            <div class="col-md-3">
+              <ul class="list-inline">
+                <%= link_to public_item_path(item) do %>
                   <% if item.image.attached? %>
-                    <%= image_tag item.image, size: "150x150" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "150x150" %>
-                  <% end %><br>
-                <%= link_to item.name,public_item_path(item.id)%>
-                <% if current_customer.already_favorited?(item) %>
-                      <%= link_to public_item_favorite_path(item), method: :delete do %>
-                       <i class="fas fa-heart"></i>
-                      <% end %>
-                       <%= item.favorites.count %>
-                  <% else %>
-                       <%= link_to public_item_favorite_path(item), method: :post do %>
-                       <i class="far fa-heart"></i>
-                       <% end %>
-                       <%= item.favorites.count %>
-                  <% end %><br>
-                  税込み <%= (item.add_tax_price.to_s(:delimited)) %>円
-                <% end %>
-                  <%= paginate @items %>
-                <% end %>
+                    <%= image_tag item.image, size: "100x100" %>
+                      <% else %>
+                        <%= image_tag 'no_image', size: "100x100" %>
+                          <% end %><br> <small><%= link_to item.name,public_item_path(item.id)%><br>
+                            <% if current_customer.already_favorited?(item) %>
+                                 <%= link_to public_item_favorite_path(item), method: :delete do %>
+                                 <i class="bi bi-suit-heart-fill"></i>
+                                <% end %>
+                                <%= item.favorites.count %>
+                            <% else %>
+                                <%= link_to public_item_favorite_path(item), method: :post do %>
+                                 お気に入り<i class="bi bi-suit-heart"></i>
+                                <% end %>
+                                <%= item.favorites.count %></p>
+                            <% end %><br> 
+                                <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
+                    <% end %>
+                  <%#= paginate @items %>
+              </ui>
+            </div>
+            <% end %>
         </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
