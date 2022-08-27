@@ -4,7 +4,7 @@
           <%= link_to root_path, class: "navbar-item" do %>  <!--文字にリンクを埋め込む実装コード-->
             <%= image_tag 'logo2.jpg', size: "100x100" %>
           <% end %>
-          <small><%= current_customer.last_name %>様
+          <small><%#= current_customer.last_name %>
             &emsp;いつもご利用いただきありがとうございます。</small>
         </div>
       </div>
@@ -37,13 +37,13 @@
                     <i class="bi bi-cart3" style="margin-right:30px;">
                       <%= link_to "おかいものかご", public_cart_items_path, class: "navbar-item button is-warning is-light" %>
                     </i>
-              </div>
                     <i class="bi bi-box-arrow-in-right" style="margin-right:30px;">
                       <%= link_to "ログイン", new_customer_session_path, class: "button is-warning is-light" %>
                     </i>
                     <i class="bi bi-person-plus" style="margin-right:30px;">
                       <%= link_to "新規登録", new_customer_registration_path, class: "button is-warning is-light" %>
                     </i>
+              </div>
             </div>
           </div>
         </div>
