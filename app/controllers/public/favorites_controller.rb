@@ -1,15 +1,16 @@
 class Public::FavoritesController < ApplicationController
     
     def create
-        p "aa"
-        @favorite = current_customer.favorites.create(item_id: params[:item_id])
-        redirect_back(fallback_location: root_path)
+        item = Item.find(params[:item_id])
+        favorite = current_customer.favorites.new(item_id: item.id)
+        favorite.save
+        redirect_to public_items_path(item)
     end
     
     def destroy
-        @item = Item.find(params[:item_id])
-        @favorite = current_customer.favorites.find_by(item_id: @item.id)
-        @favorite.destroy
-        redirect_back(fallback_location: root_path)
+        item = Item.find(params[:item_id])
+        favorite = current_customer.favorites.find_by(item_id: item.id)
+        favorite.destroy
+        redirect_to public_items_path(item)
     end
 end

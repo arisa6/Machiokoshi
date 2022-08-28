@@ -14,19 +14,22 @@
         <div class="col-md-5 " style="margin-top:30px; ">
           <small><%= @item.store %></small><br>
           <h6 class="font-weight-bold"><%= @item.name %></h6>
-            <% if current_customer.already_favorited?(@item) %>
-                <%= link_to public_item_favorites_path(@item), method: :delete do %>
-                  <i class="bi bi-suit-heart-fill"></i>
-                    <% end %>
-                  <%= @item.favorites.count %>
-              <% else %>
-                  <%= link_to public_item_favorites_path(@item), method: :post do %>
-                    お気に入り<i class="bi bi-suit-heart"></i>
-                  <% end %>
-                  <%= @item.favorites.count %></p>
-              <% end %>
+            <!--<%# if item.favorited_by?(current_customer) %>-->
+            <!--    <p>-->
+            <!--     <%#= link_to public_item_favorites_path(item), method: :delete do %>-->
+            <!--      ♥<%#= item.favorites.count %> いいね-->
+            <!--     <%# end %>-->
+            <!--    </p>-->
+            <!--<%# else %>-->
+            <!--    <p>-->
+            <!--     <%#= link_to public_item_favorites_path(item), method: :post do %>-->
+            <!--      ♡<%#= item.favorites.count %> いいね-->
+            <!--     <%# end %>-->
+            <!--    </p>-->
+            <!--<%# end %>-->
             <p><%= @item.add_tax_price.to_s(:delimited) %><span style="font-size:5px;">円(税込)</span></p>
             <small><%= @item.introduction %></small>
+        </div>
         </div>
         
         <div class="col-md-10 " style="text-align: right;margin-top:30px; ">
@@ -39,7 +42,8 @@
               </div>
             <% else %>
               <div class="button" style="text-align: right;">
-                <%= link_to "購入するには会員登録が必要です",  new_customer_registration_path,class: "btn btn-outline-danger" %>
+                <%= link_to "購入するには会員登録が必要です",  new_customer_registration_path, class: "btn btn-outline-danger" %>
+                <%= link_to "ログインはこちら", customer_session_path, class: "btn btn-outline-danger"%>
               </div>
             <% end %> 
           <% end %>

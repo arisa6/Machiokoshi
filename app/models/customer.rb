@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
-  has_many :favorites,dependent: :destroy
+  # has_many :favorites,dependent: :destroy
   has_many :items, dependent: :destroy
   
   # 退会機能
@@ -17,8 +17,10 @@ class Customer < ApplicationRecord
   
   
   # いいねをしたかしていないかの判定メソッド
-  def already_favorited?(item)
-    self.favorites.exists?(item_id: item.id) #以前にitem_idがテーブルに保存されているかを調べる
-  end
+  # def already_favorited?(item)
+  #   self.favorites.exists?(item_id: item.id) #以前にitem_idがテーブルに保存されているかを調べる
+  # end
+
+  
   
 end

@@ -22,17 +22,19 @@
                   <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
                 <% end %>
                 <small><%= link_to item.name,public_item_path(item.id)%><br>
-                <% if current_customer.already_favorited?(item) %>
-                     <%= link_to public_item_favorites_path(item), method: :delete do %>
-                     <i class="bi bi-suit-heart-fill"></i>
-                    <% end %>
-                    <%= item.favorites.count %>
-                <% else %>
-                    <%= link_to public_item_favorites_path(item), method: :post do %>
-                     お気に入り<i class="bi bi-suit-heart"></i>
-                    <% end %>
-                    <%= item.favorites.count %></p>
-                <% end %><br> 
+                  <!--<%# if item.favorited_by?(current_customer) %>-->
+                  <!--  <p>-->
+                  <!--    <%#= link_to public_item_favorites_path(item), method: :delete do %>-->
+                  <!--     ♥<%#= item.favorites.count %> いいね-->
+                  <!--    <%# end %>-->
+                  <!--    </p>-->
+                  <!--<%# else %>-->
+                  <!--    <p>-->
+                  <!--    <%#= link_to public_item_favorites_path(item), method: :post do %>-->
+                  <!--     ♡<%#= item.favorites.count %> いいね-->
+                  <!--    <%# end %>-->
+                  <!--  </p>-->
+                  <!--<%# end %></div>-->
               </ui>
             </div>
             <% end %>
