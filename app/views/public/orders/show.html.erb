@@ -3,80 +3,95 @@
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <h4><strong class="border-bottom">注文履歴詳細画面</strong></h4>
     </div>
-    
-    <div class="col-md-5 offset-1" style="margin-top:30px; ">
-      <strong>注文情報</strong>
-        <table class="table">
-          <thead class="table">
-            <tr>
-              <th scope="col">注文日</th>
-              <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            </tr>
-            <tr>
-              <th scope="col">配送先</th>
-               <td><%= current_customer.last_name %>様<br>
-               〒<%= @customer.postal_code %><%= @customer.address %>
-              </td>
-            </tr>
-            <tr>
-              <th scope="col">支払方法</th>
-              <td><%= @order.payment_method %></td>
-            </tr>
-            <tr>
-              <th scope="col">ステータス</th>
-              <td><%= @order.status %></td>
-            </tr>
-          </thead>
-        </table>
+    <div class="col-md-5 offset-1" style="margin-top:30px; "> <strong>注文情報</strong>
+      <table class="table">
+        <thead class="table">
+          <tr>
+            <th scope="col">注文日</th>
+            <td>
+              <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">配送先</th>
+            <td>
+              <%= current_customer.last_name %>様<br> 〒
+                <%= @customer.postal_code %>
+                  <%= @customer.address %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">支払方法</th>
+            <td>
+              <%= @order.payment_method %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">ステータス</th>
+            <td>
+              <%= @order.status %>
+            </td>
+          </tr>
+        </thead>
+      </table>
     </div>
-     <div class="col-md-5 offset-1" style="margin-top:30px; ">
-       <strong>請求情報</strong>
-       <table class="table">
-         <thead class="table">
-            <tr>
-              <th scope="col">配送料</th>
-              <td>¥<%#= @order.postage %><br>
-                    ¥<%#= @order.postage.to_s(:delimited, delimiter: ',') %></td>
-            </tr>
-            <tr>
-              <th scope="col">商品合計</th>
-              <td>¥<%#= (@order.billing_amount - @order.postage).to_s(:delimited, delimiter: ',') %></td>
-            </tr>
-            <tr>
-              <th scope="col">ご請求金額</th>
-              <td>¥<%#= @order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
-            </tr>
-           </thead>
-         </table>
-       </div>
+    <div class="col-md-5 offset-1" style="margin-top:30px; "> <strong>請求情報</strong>
+      <table class="table">
+        <thead class="table">
+          <tr>
+            <th scope="col">配送料</th>
+            <td>¥
+              <%#= @order.postage %><br> ¥
+                <%#= @order.postage.to_s(:delimited, delimiter: ',') %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">商品合計</th>
+            <td>¥
+              <%#= (@order.billing_amount - @order.postage).to_s(:delimited, delimiter: ',') %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">ご請求金額</th>
+            <td>¥
+              <%#= @order.billing_amount.to_s(:delimited, delimiter: ',') %>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
   </div>
 </div>
-          
-
-    <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-      <h4><strong>注文内容</strong></h4>
-    	
-        <table class="table">
-          <thead class="table">
-            <tr>
-                <th>商品</th>
-                <th>単価(税込)</th>
-                <th>個数</th>
-                <th>小計</th>
-            </tr>
-          </thead>
-          <tbody>
-        	<% @order_details.each do |order_detail| %>
-            <tr>
-                <td><%= order_detail.item.name %></td>
-                <td>¥<%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %></td>
-                <td><%= order_detail.amount %></td>
-                <td>¥<%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %></td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-    </div>
-    
+<div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
+  <h4><strong>注文内容</strong></h4>
+  <table class="table">
+    <thead class="table">
+      <tr>
+        <th>商品</th>
+        <th>単価(税込)</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td>
+            <%= order_detail.item.name %>
+          </td>
+          <td>¥
+            <%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %>
+          </td>
+          <td>
+            <%= order_detail.amount %>
+          </td>
+          <td>¥
+            <%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
 </div>
 </div>

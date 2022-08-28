@@ -1,9 +1,9 @@
 class Public::ItemsController < ApplicationController
  def index
   @genres = Genre.all
-  @items = Item.where(is_active: true) #.page(params[:page]).per(8)
+  @items = Item.where(is_active: true).page(params[:page]).per(4)
   @items_all = Item.all.where(is_active: true)
-  @item = Item.limit(4).order("created_at DESC")
+  # @item = Item.limit(4).order("created_at DESC")
  end
 
  def show

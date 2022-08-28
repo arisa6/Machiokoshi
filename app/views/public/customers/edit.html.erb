@@ -3,58 +3,38 @@
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <h2 class="border-bottom">会員情報編集</h2>
     </div>
-    <div class="col-md-10 offset-1" style="form-align: center;margin-top:30px; ">
+    <div class="col-md-8 offset-2" style="form-align: center;margin-top:30px; ">
       <%= form_with model: @customer, url: public_customer_path, method: :patch do |f| %>
-          <table class="table table-hover">
-            <tr>
-              <th>
-               <%= f.label :氏名 %>
-              </th>
-                <td>姓<br>
-                 <%= f.text_field :last_name,:size=>"40" %>
-                </td>
-                <td>名<br>
-                <%= f.text_field :first_name,:size=>"40" %>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                 <%= f.label :ﾌﾘｶﾞﾅ %>
-                </th>
-                <td>ｾｲ<br>
-                 <%= f.text_field :last_name_kana,:size=>"40" %>
-                </td>
-                <td>ﾒｲ<br>
-                <%= f.text_field :first_name_kana,:size=>"40" %>
-                </td>
-            </tr>
-            <tr>
-                <th>郵便番号</th>
-                <td><%= f.text_field :postal_code,:size=>"40" %></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>住所</th>
-                <td colspan="2"><%= f.text_field :address, :size=>"103" %></td>
-            </tr>
-            <tr>
-                <th>電話番号</th>
-                <td colspan="2"><%= f.text_field :phone_number,:size=>"40" %></td>
-            </tr>
-            <tr>
-                <th>メールアドレス</th>
-                <td colspan="2"><%= f.text_field :email, :size=>"40",autofocus: true, autocomplete: "email" %></td>
-            </tr>
-          </table>
-           <%#= link_to "編集内容を保存する", public_customer_path, class: "btn btn-danger"%>
-           <%= f.submit "編集内容を保存する", class: "btn btn-danger" %>
-           <%= link_to "退会する", unsubscribe_public_customers_path, class: "btn btn-outline-danger" %>
-            <% end %>
-      </div>
+        <table class="table table-hover">
+          <tbody>
+              <tr>
+                <th><%= f.label :氏名 %></th>
+                <td>姓<br><%= f.text_field :last_name %></td>
+                <td>名<br><%= f.text_field :first_name %></td>
+              </tr>
+              <tr>
+                <th><%= f.label :ﾌﾘｶﾞﾅ %></th>
+                <td>ｾｲ<br><%= f.text_field :last_name %></td>
+                <td>ﾒｲ<br><%= f.text_field :first_name_kana %></td>
+              </tr>
+              <tr>
+                <th>郵便番号</th><td><%= f.text_field :postal_code %></td>
+              </tr>
+              <tr>
+                <th>住所</th><td><%= f.text_field :address %></td>
+              </tr>
+              <tr>
+                <th>電話番号</th><td><%= f.text_field :phone_number %></td>
+              </tr>
+              <tr>
+                <th>メールアドレス</th><td><%= f.text_field :email, autofocus: true, autocomplete: "email" %></td>
+              </tr>
+          </tbody>
+        </table>
+        <%#= link_to "編集内容を保存する", public_customer_path, class: "btn btn-danger"%>
+          <%= f.submit "編集内容を保存する", class: "btn btn-danger" %>
+            <%= link_to "退会する", unsubscribe_public_customers_path, class: "btn btn-outline-danger" %>
+              <% end %>
     </div>
   </div>
 </div>
-
-            
-          
-    

@@ -16,27 +16,28 @@
                 <%= link_to public_item_path(item) do %>
                   <% if item.image.attached? %>
                     <%= image_tag item.image, size: "100x100" %>
-                      <% else %>
-                        <%= image_tag 'no_image', size: "100x100" %>
-                          <% end %><br> <small><%= link_to item.name,public_item_path(item.id)%><br>
-                            <% if current_customer.already_favorited?(item) %>
-                                 <%= link_to public_item_favorite_path(item), method: :delete do %>
-                                 <i class="bi bi-suit-heart-fill"></i>
-                                <% end %>
-                                <%= item.favorites.count %>
-                            <% else %>
-                                <%= link_to public_item_favorite_path(item), method: :post do %>
-                                 お気に入り<i class="bi bi-suit-heart"></i>
-                                <% end %>
-                                <%= item.favorites.count %></p>
-                            <% end %><br> 
-                                <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %><br> 
+                  <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
+                <% end %>
+                <small><%= link_to item.name,public_item_path(item.id)%><br>
+                <% if current_customer.already_favorited?(item) %>
+                     <%= link_to public_item_favorites_path(item), method: :delete do %>
+                     <i class="bi bi-suit-heart-fill"></i>
                     <% end %>
-                  <%#= paginate @items %>
+                    <%= item.favorites.count %>
+                <% else %>
+                    <%= link_to public_item_favorites_path(item), method: :post do %>
+                     お気に入り<i class="bi bi-suit-heart"></i>
+                    <% end %>
+                    <%= item.favorites.count %></p>
+                <% end %><br> 
               </ui>
             </div>
             <% end %>
         </div>
       </div>
     </div>
+      <%= paginate @items %>
   </div>

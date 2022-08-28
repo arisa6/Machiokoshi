@@ -39,7 +39,8 @@ Rails.application.routes.draw do
     # get 'public/customers/edit/:id', to: 'public/customers#edit'  
     # patch 'public/customers/edit/:id', to: 'public/customers#update' 会員情報更新未実装
     resources :items, only:[:index,:show] do
-     resource :favorite, only: [:index, :create, :destroy]
+     resource :favorites, only: [:create, :destroy]
+    # post "photos", to: "photos#create"
     end
     resources :genres, only:[:show]
 

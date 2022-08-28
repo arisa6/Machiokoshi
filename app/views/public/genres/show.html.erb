@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2" style="text-align: center;margin-top:50px;"> <strong class="border-bottom" style="color: red;">商品を探す</strong> <button type="button" class="btn btn-outline-danger" disabled="disabled">ジャンルから選ぶ
+    <div class="col-md-2" style="text-align: center;margin-top:50px;"> <strong class="border-bottom" style="color: red;">商品を探す</strong> <button type="button" class="btn btn-outline-danger"
+        disabled="disabled">ジャンルから選ぶ
              <% @genres.each do |genre| %>
               <%= link_to genre.name, public_genre_path(genre.id),class: "btn btn-outline-dark w-100" %>
              <% end %>
@@ -17,21 +18,20 @@
                     <%= link_to item.name,public_item_path(item.id)%>
                       <%= link_to public_item_path(item.id) do %> <small><%= link_to item.name,public_item_path(item.id)%><br>
                     <%= item.price.to_s(:delimited) %>円<br></small>
-                    <% if current_customer.already_favorited?(item) %>
-                        <%= link_to public_item_favorite_path(item), method: :delete do %>
-                          <i class="bi bi-suit-heart-fill"></i>
-                        <% end %>
-                        <%= item.favorites.count %>
-                    <% else %>
-                        <%= link_to public_item_favorite_path(item), method: :post do %>
-                        お気に入り<i class="bi bi-suit-heart"></i>
-                        <% end %>
-                          <%= item.favorites.count %></p>
-                        <% end %><br> 
-                        <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
-                    <% end %>
-                  <%= paginate @item_page %>
-                </ui>
+                        <% if current_customer.already_favorited?(item) %>
+                          <%= link_to public_item_favorite_path(item), method: :delete do %> <i class="bi bi-suit-heart-fill"></i>
+                            <% end %>
+                              <%= item.favorites.count %>
+                                <% else %>
+                                  <%= link_to public_item_favorite_path(item), method: :post do %> お気に入り<i class="bi bi-suit-heart"></i>
+                                    <% end %>
+                                      <%= item.favorites.count %>
+                                        </p>
+                                        <% end %><br>
+                                          <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
+                                            <% end %>
+                                              <%= paginate @item_page %>
+                                                </ui>
             </div>
             <% end %>
         </div>
