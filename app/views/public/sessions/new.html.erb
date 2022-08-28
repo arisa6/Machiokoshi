@@ -27,17 +27,9 @@
                 <%= f.label :パスワードを登録する %>
               </div>
              <% end %>
-             <div class="actions" style="margin-top: 35px;">
+             <div class="actions" style="margin-top: 55px;">
                <button type="submit" class="btn btn-danger">ログイン</button>
              </div>
-        <% end %>
-        
-        <%= form_with model: @customer, url: customer_session_path do |f| %>
-            <div class="field">
-            <%= f.label :email %><br>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </div>
-            <%= f.submit "Sign up" ,class: "btn btn-sm btn-success" %>
         <% end %>
         
         </div>
@@ -51,7 +43,7 @@
                         ３．おいしい特産物で食品ロスの削減に貢献
                       </p>
               </div>
-              <div class="actions" style="margin-top: 40px;">
+              <div class="actions">
                    <button type="button" class="btn btn-outline-danger">
                      <%= link_to "新規会員登録", new_customer_registration_path %>
                    </button>

@@ -2,7 +2,7 @@ class Item < ApplicationRecord
     has_one_attached :image
     belongs_to :genre
     # belongs_to :customer
-    has_many :favorites,dependent: :destroy
+    # has_many :favorites,dependent: :destroy
     has_many :cart_items,dependent: :destroy
     has_many :order_details,dependent: :destroy
     
@@ -22,5 +22,9 @@ class Item < ApplicationRecord
     def add_tax_price
         (self.price * 1.10).round
     end
+    
+    # def favorited_by?(customer)
+    #   favorites.exists?(customer_id: customer.id)
+    # end
     
 end
