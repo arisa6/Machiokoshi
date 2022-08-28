@@ -62,8 +62,6 @@ gem "refile-mini_magick"
 #画像投稿機能を追加したいmodelにattachment :画像を入れたいカラム名 + _id を追記
 #view,controller,modelで必要な記述あり
 
-gem "enum_help"
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
@@ -78,3 +76,5 @@ gem 'jquery-rails'
 
 gem "sassc", "< 2.2.0"
 gem 'kaminari'
+
+gem "enum_help"
