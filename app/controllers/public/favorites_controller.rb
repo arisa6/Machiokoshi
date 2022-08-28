@@ -1,11 +1,7 @@
 class Public::FavoritesController < ApplicationController
     
-    # def index
-    #     favorites = Favorite.where(customer_id: current_customer.id).pluck(:item_id)
-    #     @favorite_list = Item.find(favorites)
-    # end
-    
     def create
+        p "aa"
         @favorite = current_customer.favorites.create(item_id: params[:item_id])
         redirect_back(fallback_location: root_path)
     end

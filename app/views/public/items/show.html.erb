@@ -6,21 +6,21 @@
     
       <div class="col-md-5 offset-1" style="margin-top:30px; ">
         <% if @item.image.attached? %>
-          <%= image_tag @item.image, size: "400x400" %>
+          <%= image_tag @item.image, size: "300x300" %>
         <% else %>
-          <%= image_tag 'no_image', size: "400x400" %>
+          <%= image_tag 'no_image', size: "300x300" %>
         <% end %>
       </div>
         <div class="col-md-5 " style="margin-top:30px; ">
           <small><%= @item.store %></small><br>
           <h6 class="font-weight-bold"><%= @item.name %></h6>
             <% if current_customer.already_favorited?(@item) %>
-                <%= link_to public_item_favorite_path(@item), method: :delete do %>
+                <%= link_to public_item_favorites_path(@item), method: :delete do %>
                   <i class="bi bi-suit-heart-fill"></i>
                     <% end %>
                   <%= @item.favorites.count %>
               <% else %>
-                  <%= link_to public_item_favorite_path(@item), method: :post do %>
+                  <%= link_to public_item_favorites_path(@item), method: :post do %>
                     お気に入り<i class="bi bi-suit-heart"></i>
                   <% end %>
                   <%= @item.favorites.count %></p>

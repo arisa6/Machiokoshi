@@ -28,9 +28,18 @@
               </div>
              <% end %>
              <div class="actions" style="margin-top: 35px;">
-                <button type="submit" class="btn btn-danger">ログイン</button>
+               <button type="submit" class="btn btn-danger">ログイン</button>
              </div>
         <% end %>
+        
+        <%= form_with model: @customer, url: customer_session_path do |f| %>
+            <div class="field">
+            <%= f.label :email %><br>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <%= f.submit "Sign up" ,class: "btn btn-sm btn-success" %>
+        <% end %>
+        
         </div>
             <div class="col-md-4" style="margin-top:30px; ">
               <h10><span class="border-bottom">まだ会員登録されていない方</span></h10>
@@ -52,5 +61,3 @@
     </div>
   </div>
 </div>
-
-<!--ログアウト機能の実装次第、新規登録画面へのフォームも実装する-->

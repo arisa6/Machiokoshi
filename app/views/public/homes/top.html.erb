@@ -43,7 +43,7 @@
             <%= image_tag item.image, size: "160x100" %>
               <% end %><br>
                 <small><%= item.name %><br>
-              ￥<%= item.price.to_s(:delimited) %><br></small>
+              <%= item.price.to_s(:delimited) %>円<br></small>
             </ui>
          </div>
           <% end %>

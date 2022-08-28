@@ -1,20 +1,19 @@
 <div class="container">
   <div class="row">
-  <div class="col-md">
-    <h2 class="p-3 mb-2">ジャンル編集</h2>
-     <tbody>
-      <%= form_with model: @genre, url: admin_genre_path do |f| %>
-        <div class="table" style="margin-top: 70px;">
-          <tr>
-            <label for="name">ジャンル名</label>
-            <td>
-              <%= f.text_field :name %>
-              <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
-            </td>
-          </tr>
-        </div>
-        <% end %>
-     </tbody>
+    <div class="col-md">
+      <h2 class="p-3 mb-2">ジャンル編集</h2>
+      <tbody>
+        <%= form_with model: @genre, url: admin_genre_path do |f| %>
+          <div class="table" style="margin-top: 70px;">
+            <tr> <label for="name">ジャンル名</label>
+              <td>
+                <%= f.text_field :name %>
+                  <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
+              </td>
+            </tr>
+          </div>
+          <% end %>
+      </tbody>
+    </div>
   </div>
-</div>
 </div>

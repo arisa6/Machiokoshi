@@ -6,7 +6,7 @@
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <table class="table">
         <thead class="table">
-            <tr>
+          <tr>
             <th></th>
             <th>商品名</th>
             <th>単価</th>
@@ -15,47 +15,53 @@
             <th></th>
           </tr>
         </thead>
-        
         <tbody>
           <% @cart_items.each do |cart_item| %>
-          <tr>
-            <td><% if cart_item.item.image.attached? %>
-                 <%= image_tag cart_item.item.image, size: "100x100" %>
-                <% else %>
-                 <%= image_tag 'no_image.jpg', size: "100x100" %>
-                <% end %>
-            </td>
-            <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.add_tax_price.to_s(:delimited) %>円</td>
-            <td>
-              <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
-                <%= f.select :amount, *[1..10], class: "" %>
-                <%= f.submit "変更",class: "btn btn-outline-success" %>
-              <% end %>
-            </td>
-            <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
-            
-            <td><%= button_to "削除", public_cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" %></td>
-          </tr>
-         <% end %>
+            <tr>
+              <td>
+                <% if cart_item.item.image.attached? %>
+                  <%= image_tag cart_item.item.image, size: "100x100" %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: "100x100" %>
+                        <% end %>
+              </td>
+              <td>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.item.add_tax_price.to_s(:delimited) %>円</td>
+              <td>
+                <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id), method: :patch do |f| %>
+                  <%= f.select :amount, *[1..10], class: "" %>
+                    <%= f.submit "変更",class: "btn btn-outline-success" %>
+                      <% end %>
+              </td>
+              <td>
+                <%= cart_item.subtotal.to_s(:delimited) %>円</td>
+              <td>
+                <%= button_to "削除", public_cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger" %>
+              </td>
+            </tr>
+            <% end %>
         </tbody>
       </table>
     </div>
-      <div class="col-md-10 offset-1" style="text-align: right;margin-top:30px; ">
-          <h4 class="border-bottom">合計金額</h4>
-                <% @cart_items.each do |cart_item| %>
-                  <% @total +=  (cart_item.item.add_tax_price)* cart_item.amount %>
-                <% end %>
-            <p class="font-weight-bold my-2"style="font-size:20px;"><%= @total.to_s(:delimited) %>円</p>
-          <p><%= link_to "買い物を続ける", public_items_path, class: "btn btn-outline-danger" %></p>
-             <p><%= button_to "カートを空にする",  destroy_all_public_cart_items_path, method: :delete, class: "btn btn-outline-danger" %></p>
-          <p><%= link_to "購入画面に進む", new_public_order_path, class: "btn btn-outline-danger" %></p>
-      </div>
+    <div class="col-md-10 offset-1" style="text-align: right;margin-top:30px; ">
+      <h4 class="border-bottom">合計金額</h4>
+      <% @cart_items.each do |cart_item| %>
+        <% @total +=  (cart_item.item.add_tax_price)* cart_item.amount %>
+          <% end %>
+            <p class="font-weight-bold my-2" style="font-size:20px;">
+              <%= @total.to_s(:delimited) %>円</p>
+            <p>
+              <%= link_to "買い物を続ける", public_items_path, class: "btn btn-outline-danger" %>
+            </p>
+            <p>
+              <%= button_to "カートを空にする",  destroy_all_public_cart_items_path, method: :delete, class: "btn btn-outline-danger" %>
+            </p>
+            <p>
+              <%= link_to "購入画面に進む", new_public_order_path, class: "btn btn-outline-danger" %>
+            </p>
+    </div>
   </div>
 </div>
-
-
-    
-        
-        
-
