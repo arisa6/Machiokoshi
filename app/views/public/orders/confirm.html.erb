@@ -66,12 +66,7 @@
               <%= @order.payment_method  %>
             </td>
             <td>800円</td>
-            <td>〒
-              <%= @order.postal_code %>
-            </td>
-            <td>
-              <%= @order.address %>
-            </td>
+            <td><%="〒"+ @customer.postal_code %>&nbsp;<%= @customer.address %></small></td>
           </tr>
         </tbody>
       </table>
