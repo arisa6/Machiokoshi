@@ -3,6 +3,6 @@ class CartItem < ApplicationRecord
     belongs_to :customer
     
     def subtotal  #小計を求めるコマンド
-        item.add_tax_price * amount
+        item.with_tax_price * amount
     end
 end

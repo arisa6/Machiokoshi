@@ -40,22 +40,17 @@
         <thead class="table">
           <tr>
             <th scope="col">配送料</th>
-            <td>¥
-              <%#= @order.postage %><br> ¥
-                <%#= @order.postage.to_s(:delimited, delimiter: ',') %>
-            </td>
+            <td>800円<br></td>
           </tr>
           <tr>
             <th scope="col">商品合計</th>
-            <td>¥
-              <%#= (@order.billing_amount - @order.postage).to_s(:delimited, delimiter: ',') %>
+            <td>
+              円
             </td>
           </tr>
           <tr>
             <th scope="col">ご請求金額</th>
-            <td>¥
-              <%#= @order.billing_amount.to_s(:delimited, delimiter: ',') %>
-            </td>
+            <td><%#= @order.billing_amount.to_s(:delimited, delimiter: ',') %>円</td>
           </tr>
         </thead>
       </table>
@@ -77,16 +72,17 @@
       <% @order_details.each do |order_detail| %>
         <tr>
           <td>
-            <%= order_detail.item.name %>
-          </td>
-          <td>¥
-            <%= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %>
+            <%#= order_detail.item.name %>
           </td>
           <td>
-            <%= order_detail.amount %>
+            <%#= (order_detail.item.price * 1.1).floor.to_s(:delimited, delimiter: ',') %>
+            <%#= order_detail.item.with_tax_price.to_s %>円
           </td>
-          <td>¥
-            <%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %>
+          <td>
+            <%#= order_detail.amount %>
+          </td>
+          <td>
+            <%#= (order_detail.item.subtotal * order_detail.amount).to_s %>円
           </td>
         </tr>
         <% end %>

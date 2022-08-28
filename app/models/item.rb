@@ -18,13 +18,18 @@ class Item < ApplicationRecord
     def get_image
         (image.attached?) ? image : 'no_image.jpg'
     end
-  
-    def add_tax_price
-        (self.price * 1.10).round
-    end
     
+    
+    ## 消費税を求めるメソッド
+    def with_tax_price
+        (price * 1.1).floor
+    end
+        
     # def favorited_by?(customer)
     #   favorites.exists?(customer_id: customer.id)
     # end
     
+    def subtotal  #小計を求めるコマンド
+        item.with_tax_price * amount
+    end
 end
