@@ -27,7 +27,7 @@
             <!--     <%# end %>-->
             <!--    </p>-->
             <!--<%# end %>-->
-            <p><%= @item.add_tax_price.to_s(:delimited) %><span style="font-size:5px;">円(税込)</span></p>
+            <p><%= @item.with_tax_price.to_s(:delimited) %><span style="font-size:5px;">円(税込)</span></p>
             <small><%= @item.introduction %></small>
         </div>
         </div>

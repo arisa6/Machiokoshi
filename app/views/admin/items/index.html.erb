@@ -21,34 +21,29 @@
               <td>
                 <% if item.image.attached? %>
                   <%= image_tag item.image, size: "80x80" %>
-                    <% else %>
+                <% else %>
                       <%= image_tag 'no_image', size: "80x80" %>
-                        <% end %>
+                <% end %>
               </td>
-              <td>
-                <%= item.store %>
-              </td>
-              <td>
-                <%= link_to item.name,admin_item_path(item.id) %>
-              </td>
-              <td>
-                <%= item.add_tax_price.to_s(:delimited) %>
-              </td>
+              <td><%= item.store %></td>
+              <td><%= link_to item.name,admin_item_path(item.id) %></td>
+              <td><%= item.with_tax_price.to_s(:delimited) %></td>
               <td>
                 <% if item.is_active %>
                   <!--is_activeの情報を取得して在庫があるかチェック--><b class="text-success">
                       販売中</b>
                   <%# trueの時の表示 %>
-                    <% else %> <b class="text-secondary">
+                <% else %> <b class="text-secondary">
                       販売停止中</b>
                       <%# falseの時の表示 %>
-                        <% end %>
+                <% end %>
               </td>
               <td>
                 <%= link_to "編集する", edit_admin_item_path(item.id), class: "btn btn-warning" %>
               </td>
             </tr>
             <% end %>
+        <%= paginate @items %>
         </tbody>
       </table>
     </div>
