@@ -131,3 +131,8 @@ column li a,column li a:visited {
 	width: calc(33.3333% - 20px);
 }
 /*商品一覧表示　end*/
+
+.slide-img {
+    width: 40%;
+    height: 10%;
+}
