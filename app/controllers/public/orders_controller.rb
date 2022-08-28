@@ -4,7 +4,9 @@ class Public::OrdersController < ApplicationController
  def index
   @orders = Order.all
   @order = current_customer.orders
-  @order.postage = 800
+  @cart_items = current_customer.cart_items
+  @total = 0
+  # @order.postage = 800
  end
  
  def show
@@ -85,7 +87,7 @@ class Public::OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :amount, :address, :name, :postage, :status)
+    params.require(:order).permit(:parameters, :postal_code,:payment_method,:customer_id, :amount, :address, :name, :postage, :status, :total_payment)
   end
 
 end

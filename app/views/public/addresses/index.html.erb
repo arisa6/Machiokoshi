@@ -7,7 +7,7 @@
       <%= form_with model: @address, url: public_addresses_path(@address), method: :post do |f| %>
         <table class="table table-hover">
           <tr>
-            <th>郵便番号(ハイフンなし)</th>
+            <th>〒(ハイフンなし)</th>
             <td>
               <%= f.text_field :postal_code,:size=>"40" %>
             </td>
@@ -45,18 +45,18 @@
           <% @addresses.each do |address| %>
             <tr>
               <td>
-                <%= address.postal_code %>
+                〒<%= address.postal_code %>
               </td>
               <td>
                 <%= address.address %>
               </td>
               <td>
-                <%= address.name %>
+                <%= address.name %>様
               </td>
               <td>
                 <p>
                   <%= link_to"編集する", edit_public_address_path(address), class: "btn btn-secondary" %>
-                    <%= button_to"削除する", public_address_path(address),method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-secondary" %>
+                    <%= link_to"削除する", public_address_path(address),method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-secondary" %>
                 </p>
               </td>
             </tr>
