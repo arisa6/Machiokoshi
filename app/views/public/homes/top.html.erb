@@ -4,7 +4,7 @@
     <div class="swiper-container"><!-- メイン表示部分 -->
       <div class="swiper-wrapper"><!-- 各スライド -->
         <div class="swiper-slide"><img src="/assets/(14).jpg" alt style="width: 40%; height: 10%;"></div>
-          <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 40%; height: 10%;"></div>
+        <div class="swiper-slide"><img src="/assets/(2).jpg" alt style="width: 40%; height: 10%;"></div>
         <div class="swiper-slide"><img src="/assets/(6).jpg" alt style="width: 40%; height: 10%;"></div>
       </div>
     </div>
@@ -40,8 +40,13 @@
               <div class ="col-md-3">
             <ul class="list-inline">
           <%= link_to public_item_path(item.id) do %>
-            <%= image_tag item.image, size: "160x100" %>
-              <% end %><br>
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size: "160x100" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "160x100" %>
+            <% end %>
+          <% end %>
+          <br>
                 <small><%= item.name %><br>
               <%= item.price.to_s(:delimited) %>円<br></small>
             </ui>
