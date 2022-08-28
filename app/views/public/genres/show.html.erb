@@ -8,33 +8,21 @@
          </div></button>
       <div class="col-md-10">
         <h4 class="border-bottom" style="text-align: center;margin-top:30px; ">
-          <%= @genre.name %>商品一覧(全 <span style="font-size:25px;"><%= @items_all.count %></span>件)</h4>
+          <%= @genre.name %></h4>
         <div class="d-flex flex-wrap justify-content-around">
           <% @items.each do |item| %>
             <div class="col-md-3">
               <ul class="list-inline">
                 <% link_to public_item_path(item.id) %>
                   <%= image_tag item.get_image, size: '100x100' %><br>
-                    <%= link_to item.name,public_item_path(item.id)%>
                       <%= link_to public_item_path(item.id) do %> <small><%= link_to item.name,public_item_path(item.id)%><br>
                     <%= item.price.to_s(:delimited) %>円<br></small>
-                        <% if current_customer.already_favorited?(item) %>
-                          <%= link_to public_item_favorite_path(item), method: :delete do %> <i class="bi bi-suit-heart-fill"></i>
-                            <% end %>
-                              <%= item.favorites.count %>
-                                <% else %>
-                                  <%= link_to public_item_favorite_path(item), method: :post do %> お気に入り<i class="bi bi-suit-heart"></i>
-                                    <% end %>
-                                      <%= item.favorites.count %>
-                                        </p>
-                                        <% end %><br>
-                                          <%= (item.add_tax_price.to_s(:delimited)) %>円(税込み)<br></small>
-                                            <% end %>
-                                              <%= paginate @item_page %>
-                                                </ui>
-            </div>
-            <% end %>
+                  <%= (item.with_tax_price.to_s(:delimited)) %>円(税込)<br></small>
+                    <% end %>
+                      <%= paginate @item_page %>
+                        </ui>
         </div>
+            <% end %>
       </div>
     </div>
   </div>
