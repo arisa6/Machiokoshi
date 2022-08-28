@@ -3,17 +3,16 @@
     <div class="col-md-10 offset-1" style="margin-top:30px; ">
       <h1 class="border-bottom">商品詳細</h1>
     </div>
-   
   <div class="col-md-2 offset-1" style="text-align: light;">
-    <table class="table table-hover">
+     <table class="table table-hover">
       <tr>
         <% if @item.image.attached? %>
           <%= image_tag @item.image, size: "200x200" %>
-            <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
+        <% else %>
+          <%= image_tag 'no_image_jpg', size: "200x200" %>
         <% end %>
       </tr>
-    </table>
+     </table>
   </div>
   <div class="col-md-8 offset-1" style="text-align: light;">
     <table class="table">
@@ -42,14 +41,10 @@
             <% end %>
           </td>
         </tr>
-        <%# if customer_signed_in? %>
-          <!--セレクトショップのため不要-->
-          <%# end %>
     </table>
-          <div class="col-md-10 offset-1" style="text-align: right;">
-            <%= link_to '編集', edit_admin_item_path(@item), class: "btn btn-success" %>
-            <%= link_to '削除', admin_items_destroy_path(@item), method: :delete, class: "btn btn-danger" %>
-          </div> 
-          
-   </div>
+      <div class="col-md-10 offset-1" style="text-align: right;">
+        <%= link_to '編集', edit_admin_item_path(@item), class: "btn btn-success" %>
+        <%= link_to '削除', admin_items_destroy_path(@item), method: :delete, class: "btn btn-danger" %>
+      </div>
   </div>
+</div>

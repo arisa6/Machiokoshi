@@ -1,12 +1,12 @@
 <% if item.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading"><%= pluralize(item.errors.count, "error") %></h4>
+   <h4 class="alert-heading"><%= pluralize(item.errors.count, "error") %></h4>
     <p><%= pluralize(item.errors.count, "error") %> prohibited this object from being saved: not successfully</p>
-    <hr>
+      <hr>
     <p class="mb-0">
       <% item.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+       <% end %>
     </p>
   </div>
 <% end %>
