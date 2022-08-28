@@ -31,6 +31,8 @@ body {
     line-height: 1.7;
     color: black;
     background-color: #F2EDDF;
+    /* もし表示に不具合があれば以下を解除する */
+    overflow-x: hidden 
 }
 
 /*フッター　start*/
