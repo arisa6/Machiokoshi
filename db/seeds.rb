@@ -8,7 +8,6 @@
 
 
 Admin.create!(
-  id: '1',
   email: 'admin@gmail',
   password: '111111',
 )
