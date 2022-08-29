@@ -58,15 +58,20 @@
     <table class="float-right" cellpadding="5">
       <tr class="border-top">
         <th><h6>商品合計</h6></th>
-        <td><h6><%= @order.billing_amount %>円</h6></td>
+        
+        <td><h6>
+          <%  @order_details.each do |order_detail| %>
+           <%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %>円</h6></td>
+          
       </tr>
       <tr>
         <th><h6>送料</h6></th>
-        <td><h6><%= @order_postage %>円</h6>/td>
+        <td><h6><%= @order_postage %>円</h6></td>
       </tr>
       <tr class="border-bottom border-top">
         <th><h4>請求金額合計</h4></th>
-        <td><h4><%= @order.total_payment %>円</h4></td>
+        <td><h4><%= total_payment = (order_detail.price * 1.1).floor.to_s(:delimited, delimiter: ',') * order_detail.amount %>円</h4></td>
       </tr>
+          <% end %>
     </table>
   </div>

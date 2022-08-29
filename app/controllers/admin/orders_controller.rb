@@ -5,7 +5,6 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details
     @order_postage = 800 #送料
-    
   end
 
   def update
@@ -34,6 +33,6 @@ class Admin::OrdersController < ApplicationController
   
   
   def order_params
-   params.require(:order).permit(:status, :postal_code, :total_payment)
+   params.require(:order).permit(:status, :postal_code, :total_payment, :billing_amount)
   end
 end
