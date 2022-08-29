@@ -20,4 +20,10 @@ ja:
         is_active:
         sale: "販売中"
         stop_sale: "販売停止中"
-   
+   activerecord:
+    errors:
+       messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
