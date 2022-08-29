@@ -8,18 +8,18 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    # @order = Order.find(params[:id])
-    # if @order.update(order_params)
-    # redirect_to admin_order_path(@order), notice: "ステータスを更新しました"
-    # render :show, notice: "対応ステータスを更新できませんでした"
-    
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    @order.update(order_params)
+    if @order.update(order_params)
       if @order.status == "payment_confirmation"
          @order_details.update_all(making_status: "work_wait")
       end
-    redirect_to admin_order_path
+      redirect_to admin_order_path
+      flash[:notice] = 'ステータスを更新しました。'
+    else
+     render :show
+     flash[:notice] = '対応ステータスを更新できませんでした。'
+    end
   end
   
   
@@ -34,9 +34,7 @@ class Admin::OrdersController < ApplicationController
    def order_params
     params.require(:order).permit( :making_status, :status, :postal_code, :total_payment, :billing_amount )
    end
-  
-  
-  def order_details_params
+   def order_details_params
     params.require(:order_detail).permit( :item, :price, :amount, :making_status )
-  end
+   end
 end

@@ -17,7 +17,8 @@ class Admin::ItemsController < ApplicationController
          redirect_to admin_items_path(@item)
       else
          logger.debug @item.errors.inspect
-         render new_admin_item_path
+        flash[:notice] = '商品を登録できませんでした。'
+        render new_admin_item_path
       end
    end
 
@@ -33,9 +34,10 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
-      flash[:notice] = '商品情報を編集しました'
+      flash[:notice] = '商品情報を更新しました'
     else
       render :"edit"
+      flash[:notice] = '商品情報の更新に失敗しました'
     end
   end
   
@@ -46,6 +48,7 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path, notice: "商品を削除しました。"
   end
   
+  private
   
   def item_params
   	params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :store, :image)
