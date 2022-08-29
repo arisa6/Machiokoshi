@@ -8,23 +8,18 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
+    # @order = Order.find(params[:id])
+    # if @order.update(order_params)
+    # redirect_to admin_order_path(@order), notice: "ステータスを更新しました"
+    # render :show, notice: "対応ステータスを更新できませんでした"
+    
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-  	@order_details = @order.order_details
-      redirect_to admin_order_detail_path, notice: "更新に成功しました。"
-    end
-    # case @order.status
-    #   when "入金待ち"
-    #     @order_details.update(making_status: 0)
-    #   when "入金確認"
-    #     @order_details.update(making_status: 1)
-    #   when "製作中"
-    #     @order_details.update(making_status: 2)
-    #   when "発送準備中"
-    #     @order_details.update(making_status: 3)
-    # end
-  	
-	  redirect_to  admin_order_detail_path(@order)
+    @order_details = @order.order_details
+    @order.update(order_params)
+      if @order.status == "payment_confirmation"
+         @order_details.update_all(making_status: "work_wait")
+      end
+    redirect_to admin_order_path
   end
   
   
@@ -34,7 +29,14 @@ class Admin::OrdersController < ApplicationController
   end
   
   
-  def order_params
-   params.require(:order).permit(:status, :postal_code, :total_payment, :billing_amount)
+  private
+  
+   def order_params
+    params.require(:order).permit( :making_status, :status, :postal_code, :total_payment, :billing_amount )
+   end
+  
+  
+  def order_details_params
+    params.require(:order_detail).permit( :item, :price, :amount, :making_status )
   end
 end
