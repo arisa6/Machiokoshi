@@ -10,7 +10,7 @@ ja:
         under_prodction: "製作中"
         preparing_ship: "発送準備中"
         sent: "発送済み"
-      order_detail:
+    order_detail:
       making_status:
         work_wrong: "製作不可"
         work_wait: "製作待ち" 
