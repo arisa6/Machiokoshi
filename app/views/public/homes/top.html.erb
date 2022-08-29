@@ -54,7 +54,7 @@
           <% end %>
           <br>
                 <small><%= item.name %><br>
-              <%= item.price %>円<br></small>
+              <%= item.price.to_s(:delimited) %>円<br></small>
             </ui>
          </div>
           <% end %>
