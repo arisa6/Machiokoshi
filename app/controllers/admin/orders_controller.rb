@@ -8,21 +8,23 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    @order_detail = OrderDetail.find(params[:id])
-    @order_detail.update(order_detail_params)
-    @order = Order.find(@order_detail.order_id)
-      case @order.status
-      when "入金待ち"
-        @order_details.update(making_status: 0)
-      when "入金確認"
-        @order_details.update(making_status: 1)
-      when "製作中"
-        @order_details.update(making_status: 2)
-      when "発送準備中"
-        @order_details.update(making_status: 3)
-      end
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+  	@order_details = @order.order_details
+      redirect_to admin_order_detail_path, notice: "更新に成功しました。"
+    end
+    # case @order.status
+    #   when "入金待ち"
+    #     @order_details.update(making_status: 0)
+    #   when "入金確認"
+    #     @order_details.update(making_status: 1)
+    #   when "製作中"
+    #     @order_details.update(making_status: 2)
+    #   when "発送準備中"
+    #     @order_details.update(making_status: 3)
+    # end
   	
-	  redirect_to  admin_order_path(@order)
+	  redirect_to  admin_order_detail_path(@order)
   end
   
   
