@@ -19,7 +19,7 @@
          </td>
         <td><%= @order.payment_method_i18n %></td>
         <td>
-          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+          <%= form_with model: @order_details,url: admin_order_detail_path do |f| %>
             <%= f.select :status,["入金待ち","入金確認","製作中","発送準備中","発送済み"] %>
             <%= f.submit "更新" ,class: "btn btn-outline-primary btn-sm" %>
           <% end %>
@@ -58,15 +58,20 @@
     <table class="float-right" cellpadding="5">
       <tr class="border-top">
         <th><h6>商品合計</h6></th>
-        <td><h6><%= @order.billing_amount %>円</h6></td>
+        
+        <td><h6>
+          <%  @order_details.each do |order_detail| %>
+           <%= ((order_detail.item.price * 1.1).floor * (order_detail.amount)).to_s(:delimited, delimiter: ',') %>円</h6></td>
+          
       </tr>
       <tr>
         <th><h6>送料</h6></th>
-        <td><h6><%= @order_postage %>円</h6>/td>
+        <td><h6><%= @order_postage %>円</h6></td>
       </tr>
       <tr class="border-bottom border-top">
         <th><h4>請求金額合計</h4></th>
-        <td><h4><%= @order.total_payment %>円</h4></td>
+        <td><h4><%= total_payment = (order_detail.price * 1.1).floor.to_s(:delimited, delimiter: ',') * order_detail.amount %>円</h4></td>
       </tr>
+          <% end %>
     </table>
   </div>
