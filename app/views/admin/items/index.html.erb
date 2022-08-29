@@ -27,7 +27,7 @@
               </td>
               <td><%= item.store %></td>
               <td><%= link_to item.name,admin_item_path(item.id) %></td>
-              <td><%= item.with_tax_price.to_s(:delimited) %></td>
+              <td><%= item.price %>円</td>
               <td>
                 <% if item.is_active %>
                   <!--is_activeの情報を取得して在庫があるかチェック--><b class="text-success">
