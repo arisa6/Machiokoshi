@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
   @customer = current_customer
   @cart_items = current_customer.cart_items
   @order = Order.new
-  @addresses = current_customer.address
+  @addresses = current_customer.addresses.all
  end
  
  def create

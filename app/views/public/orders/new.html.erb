@@ -10,9 +10,10 @@
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <%= form_with model: @order,url:confirm_public_orders_path,local: true do |f| %>
         <p class="border-bottom">お届け先様の選択</p><small>(商品をお届けしたいご住所を選択または、登録して下さい)</small><br>
-        <!--登録済み住所を記載--><small><%= f.radio_button :address, :"1"%>
+        <!--登録済み住所を記載--><small>
+                <%= f.radio_button :address, :"1"%>
                 <%= f.label :address, "登録済の住所から選択" %><br>
-                <%#= f.collection_select(:address_id, @addresses, :id, :full_address) %><br>
+                <%= f.collection_select(:address_id, @addresses, :id, :address) %><br>
                 
                 <%= f.radio_button :address,:"2" %>
                 <%= f.label :address,"新しいお届け先を登録する" %><br>
