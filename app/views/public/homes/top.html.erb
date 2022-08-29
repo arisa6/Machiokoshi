@@ -42,7 +42,7 @@
     <div class="col-md-10 offset-md-1">
       <div class="top"style="margin-top: 30px;">
          <div class="d-flex flex-wrap justify-content-around">
-            <% @item.first(4).each do |item| %>
+            <% @item.each do |item| %>
               <div class ="col-md-3">
             <ul class="list-inline">
           <%= link_to public_item_path(item.id) do %>
@@ -54,7 +54,7 @@
           <% end %>
           <br>
                 <small><%= item.name %><br>
-              <%= item.price.to_s(:delimited) %>円<br></small>
+              <%= item.price %>円<br></small>
             </ui>
          </div>
           <% end %>

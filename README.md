@@ -36,6 +36,7 @@
 - 以前に訪れた地での特産物を手に入れたいとき
 
 ## 設計書
+er.jpg
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -45,9 +46,8 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
-- 商品画像：photp AC <https://www.photo-ac.com/>
-- 商品画像：depositphotos <https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>
+*商品画像*
+- photp AC <https://www.photo-ac.com/>
+- depositphotos <https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>
 - 
 ##機能一覧
