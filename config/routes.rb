@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     get "orders/history/:id" => "orders#history", as: "order_history"
     resources :order_details, only: [:update] 
     resources :customers, only:[:index,:show,:edit,:update]
-    resources :genres, only:[:index,:create,:edit,:update]
+    resources :genres, only:[:index,:create,:edit,:update, :destroy]
     resources :items, only:[:index,:show,:new,:create,:edit,:update,:destroy]
     # post 'items' => 'items#create'
     delete 'items/:id'  => 'items#destroy', as: "items_destroy"

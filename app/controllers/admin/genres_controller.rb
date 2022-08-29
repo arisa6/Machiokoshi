@@ -13,6 +13,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = '新しいジャンルを登録しました。'
     else
       @genres = Genre.all
+      flash[:notice] = '新しいジャンルを登録できました。'
       render :index
     end
   end
@@ -29,6 +30,13 @@ class Admin::GenresController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    flash[:notice] = "ジャンルを削除しました。"
+    redirect_to admin_genres_path  #編集一覧に戻る
   end
   
   private
