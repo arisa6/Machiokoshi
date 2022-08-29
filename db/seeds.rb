@@ -8,6 +8,11 @@
 
 
 Admin.create!(
-  email: 'admin@gmail.com',
+  email: 'a@gmail',
   password: '123456',
 )
+# Customer.create!(
+#   email: 'c@gmail',
+#   password: '111111',
+# )未使用
+

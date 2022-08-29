@@ -19,11 +19,11 @@
                  <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></td>
                  <td><%= customer.email %></td>
                 <td>
-                <% if customer.is_deleted %>
-                  <b class="text-secondary">退会</b><%# is_deletedの情報を取得して退会済みかチェック %> 
-                <% else %>
-                  <b class="text-success">有効</b><%# true(退会済み)の時の表示 %> 
-                <% end %><%# false(初期値)の時の表示 %>
+                  <% if customer.is_deleted %>
+                    <b class="text-secondary">退会</b><%# is_deletedの情報を取得して退会済みかチェック %> 
+                  <% else %>
+                    <b class="text-success">有効</b><%# true(退会済み)の時の表示 %> 
+                  <% end %><%# false(初期値)の時の表示 %>
               </tr>
           <% end %>
         </tbody>

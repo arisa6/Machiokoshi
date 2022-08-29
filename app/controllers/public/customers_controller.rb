@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!,except: :withdrawl
   
     def show
         @customer = current_customer
