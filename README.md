@@ -36,7 +36,7 @@
 - 以前に訪れた地での特産物を手に入れたいとき
 
 ## 設計書
-er.jpg
+<er.jpg>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -49,5 +49,3 @@ er.jpg
 *商品画像*
 - photp AC <https://www.photo-ac.com/>
 - depositphotos <https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>
-- 
-##機能一覧
