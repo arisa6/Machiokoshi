@@ -5,32 +5,32 @@
       </div>
       <div class="col-md-7 offset-1" style="margin-top:30px; ">
         <h10>会員登録が済んでいる方</10>
-          <table class="formdetail_ customer_">
-           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <!--<div class="actions" style="margin-top: 55px;">-->
+              
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
              <%= render "public/shared/error_messages", resource: resource %>
-         <tbody>
-           <table class="table">
-             <tr>
-               <th><i class="bi bi-envelope"><%= f.label :email %></i></th>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-             </tr>
-             <tr>
-               <th><i class="bi bi-key"><%= f.label :password %></i></th>
-               <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-             </tr>
-            </table>
-         </tbody>
-        
-             <% if devise_mapping.rememberable? %>
-              <div class="field">
-                <%= f.check_box :remember_me %>
-                <%= f.label :パスワードを登録する %>
-              </div>
-             <% end %>
-             <div class="actions" style="margin-top: 55px;">
-               <button type="submit" class="btn btn-danger">ログイン</button>
-             </div>
-        <% end %>
+              <!--<tbody>-->
+                 <table class="formdetail_ customer_">
+                    <tr>
+                      <th><i class="bi bi-envelope"><%= f.label :メールアドレス %></i></th>
+                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+                    </tr>
+                    <tr>
+                      <th><i class="bi bi-key"><%= f.label :パスワード %></i></th>
+                      <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+                    </tr>
+              <!--</tbody>-->
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :パスワードを登録する %>
+                  </div>
+                <% end %>
+                <div style="margin-top: 55px;">
+                  <button type="submit" class="btn btn-danger">ログイン</button>
+                </div>
+                 </table>
+            <% end %>
         
         </div>
             <div class="col-md-4" style="margin-top:30px; ">

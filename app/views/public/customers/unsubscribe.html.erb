@@ -10,8 +10,8 @@
     </div>
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <!--退会アクション-->
-      <%= link_to "退会しない", public_customer_path(current_customer), class: "btn btn-danger" %>
-        <%= link_to "退会する", withdrawl_public_customers_path, method: :patch, class: "btn btn-outline-danger %" %>
+      <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-danger" %>
+        <%= link_to "退会する", withdrawl_customers_path, method: :patch, class: "btn btn-outline-danger %" %>
     </div>
   </div>
 </div>

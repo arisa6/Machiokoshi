@@ -45,7 +45,7 @@
             <% @item.each do |item| %>
               <div class ="col-md-3">
             <ul class="list-inline">
-          <%= link_to public_item_path(item.id) do %>
+          <%= link_to item_path(item.id) do %>
             <% if item.image.attached? %>
               <%= image_tag item.image, class: "thumb-160-100"%>
             <% else %>
@@ -60,6 +60,6 @@
           <% end %>
       </div>
       <div class="col-md-10 offset-md-1" style="text-align: center;margin-top:30px; ">
-        <%= link_to '全ての商品を見る＞', public_items_path, class: "btn btn-outline-danger" %>
+        <%= link_to '全ての商品を見る＞', items_path, class: "btn btn-outline-danger" %>
       </div>
     </div>

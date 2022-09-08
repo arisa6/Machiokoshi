@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-      <%= form_with model: @order,url:confirm_public_orders_path,local: true do |f| %>
+      <%= form_with model: @order,url:confirm_orders_path,local: true do |f| %>
         <p class="border-bottom">お届け先様の選択</p><small>(商品をお届けしたいご住所を選択または、登録して下さい)</small><br>
         <!--登録済み住所を記載--><small>
                 <%= f.radio_button :address, :"1"%>
@@ -28,7 +28,7 @@
                 <%= text_field :name, placeholder: "(例)山田　花子" %></small><br>
         <div class="row">
           <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-            <p class="border-bottom">支払方法</p> <small><%= form_with model: @order,url:confirm_public_orders_path,local: true do |f| %>
+            <p class="border-bottom">支払方法</p> <small><%= form_with model: @order,url:confirm_orders_path,local: true do |f| %>
                     <%= f.radio_button :payment_method, :"credit_card" %>
                      <%= f.label :payment_method, "クレジットカード", {value: :"0"}  %></br>
                      <%= f.radio_button :payment_method, :"transfer" %>
@@ -36,7 +36,7 @@
                   <% end %>
            
                  <%= f.submit "注文内容を確認する", class: "btn btn-outline-danger" %></small><br>
-            <%= link_to "おかいものかごに戻る", public_cart_items_path %>
+            <%= link_to "おかいものかごに戻る", cart_items_path %>
           </div>
         </div>
         <% end %>
