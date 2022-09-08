@@ -47,9 +47,9 @@
             <ul class="list-inline">
           <%= link_to public_item_path(item.id) do %>
             <% if item.image.attached? %>
-              <%= image_tag item.image, size: "160x100" %>
+              <%= image_tag item.image, class: "thumb-160-100"%>
             <% else %>
-              <%= image_tag 'no_image.jpg', size: "160x100" %>
+              <%= image_tag 'no_image.jpg', class: "thumb-160-100" %>
             <% end %>
           <% end %>
           <br>

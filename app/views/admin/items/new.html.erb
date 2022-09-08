@@ -32,15 +32,17 @@
               <th><%= f.label :税抜価格 %></th>
               <td><%= f.text_field :price, size: 40, autofocus: true, autocomlete: "price", placeholder: 1000 %>円</td>
             </tr>
+            
             <tr>
               <th><%= f.label :販売ステータス %></th>
               <td>
                 <%= f.radio_button :is_active, :true %>
-                  <%= f.label :is_active,"販売中" %>
+                  <%= f.label :is_active,"販売中", value: true %>
                   <%= f.radio_button :is_active, :false %>
-                <%= f.label :is_active, "販売停止中" %>
+                <%= f.label :is_active, "販売停止中", value: false %>
               </td>
             </tr>
+
           </table>
           <div class="col-md-10 offset-1" style="text-align: right;">
            <%= f.submit "新規登録", class: "btn btn-warning" %>

@@ -20,9 +20,9 @@
             <tr>
               <td>
                 <% if cart_item.item.image.attached? %>
-                  <%= image_tag cart_item.item.image, size: "100x100" %>
+                  <%= image_tag cart_item.item.image, class: "thumb-160-100" %>
                 <% else %>
-                      <%= image_tag 'no_image.jpg', size: "100x100" %>
+                      <%= image_tag 'no_image.jpg', class: "thumb-160-100" %>
                 <% end %>
               </td>
               <td>
