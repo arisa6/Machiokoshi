@@ -136,3 +136,20 @@ column li a,column li a:visited {
     width: 40%;
     height: 10%;
 }
+
+/*イメージタグのサイズ指定*/
+.thumb-160-100{
+    width: 160px;
+    height: 100px;
+    object-fit: cover;  
+}
+.thumb-200-200{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;  
+}
+.thumb-300-300{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;  
+}

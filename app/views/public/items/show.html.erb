@@ -6,9 +6,9 @@
     
       <div class="col-md-5 offset-1" style="margin-top:30px; ">
         <% if @item.image.attached? %>
-          <%= image_tag @item.image, size: "300x300" %>
+          <%= image_tag @item.image, class: "thumb-300-300" %>
         <% else %>
-          <%= image_tag 'no_image.jpg', size: "300x300" %>
+          <%= image_tag 'no_image.jpg', class: "thumb-300-300" %>
         <% end %>
       </div>
         <div class="col-md-5 " style="margin-top:30px; ">
