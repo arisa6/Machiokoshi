@@ -9,21 +9,21 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(amount: params[:cart_item][:amount].to_i)
-     redirect_to public_cart_items_path
+     redirect_to cart_items_path
      flash[:notice] = "商品の数量を変更しました。"
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
     flash[:notice] = "商品をおかいものかごから削除しました。"
   end
 
   def destroy_all
     @cart_item = current_customer.cart_items
     @cart_item.destroy_all
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
     flash[:notice] = "おかいものかごが空になりました。"
   end
 
@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
     else
       @new_cart_item.save
     end
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
   end
   
   

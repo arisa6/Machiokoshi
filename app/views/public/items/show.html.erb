@@ -16,13 +16,13 @@
           <h6 class="font-weight-bold"><%= @item.name %></h6>
             <!--<%# if item.favorited_by?(current_customer) %>-->
             <!--    <p>-->
-            <!--     <%#= link_to public_item_favorites_path(item), method: :delete do %>-->
+            <!--     <%#= link_to item_favorites_path(item), method: :delete do %>-->
             <!--      ♥<%#= item.favorites.count %> いいね-->
             <!--     <%# end %>-->
             <!--    </p>-->
             <!--<%# else %>-->
             <!--    <p>-->
-            <!--     <%#= link_to public_item_favorites_path(item), method: :post do %>-->
+            <!--     <%#= link_to item_favorites_path(item), method: :post do %>-->
             <!--      ♡<%#= item.favorites.count %> いいね-->
             <!--     <%# end %>-->
             <!--    </p>-->
@@ -33,7 +33,7 @@
         </div>
         
         <div class="col-md-10 " style="text-align: right;margin-top:30px; ">
-          <%= form_with model: @cart_item,url: public_cart_items_path, method: :post do |f| %>  <!--カート機能-->
+          <%= form_with model: @cart_item,url: cart_items_path, method: :post do |f| %>  <!--カート機能-->
             <% if customer_signed_in? %>  <!--会員であるかを確認-->
               <%= f.hidden_field :item_id, :value =>@item.id %>  <!--商品情報の値を送る-->
               <div class="cart_item">

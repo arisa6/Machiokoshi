@@ -4,7 +4,7 @@
       <h2 class="border-bottom">配送先登録</h2>
     </div>
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-      <%= form_with model: @address, url: public_addresses_path(@address), method: :post do |f| %>
+      <%= form_with model: @address, url: addresses_path(@address), method: :post do |f| %>
         <table class="table table-hover">
           <tr>
             <th>〒(ハイフンなし)</th>
@@ -55,8 +55,8 @@
               </td>
               <td>
                 <p>
-                  <%= link_to"編集する", edit_public_address_path(address), class: "btn btn-secondary" %>
-                    <%= link_to"削除する", public_address_path(address),method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-secondary" %>
+                  <%= link_to"編集する", edit_address_path(address), class: "btn btn-secondary" %>
+                    <%= link_to"削除する", address_path(address),method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-secondary" %>
                 </p>
               </td>
             </tr>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'public/homes/about' => 'public/homes#about', as: 'about'
   
-    namespace :public do
+    scope module: :public do
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
     resources :orders, only:[:new,:index,:show,:create]do
       collection do
