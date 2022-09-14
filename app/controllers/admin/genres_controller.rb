@@ -13,7 +13,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = '新しいジャンルを登録しました。'
     else
       @genres = Genre.all
-      flash[:notice] = '新しいジャンルを登録できました。'
+      flash[:notice] = '新しいジャンルを登録しました。'
       render :index
     end
   end
