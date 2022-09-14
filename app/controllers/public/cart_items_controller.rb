@@ -29,12 +29,13 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @new_cart_item = current_customer.cart_items.new(cart_item_params)
-    if current_customer.cart_items.find_by(item_id: @new_cart_item.item.id)
+    if current_customer.cart_items.find_by(item_id: @new_cart_item.item.id) #←ここでバリデーションエラーか否か判断する。
       @cart_item = current_customer.cart_items.find_by(item_id: @new_cart_item.item.id)
       @cart_item.amount += @new_cart_item.amount
       @cart_item.save
-    else
+    else  #エラーのとき、saveが上手く行かなかったときの記述
       @new_cart_item.save
+      # flash[:notice] = '住所の登録に失敗しました'
     end
     redirect_to cart_items_path
   end

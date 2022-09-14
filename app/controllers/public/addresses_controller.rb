@@ -9,12 +9,13 @@ class Public::AddressesController < ApplicationController
  def create
   @address = Address.new(address_params)
   @address.customer_id = current_customer.id
-    if @address.save
-      redirect_to public_addresses_path
-    else
-      @address = Address.new
-      @addresses = Address.all
-      render 'index'
+  @addresses = current_customer.addresses
+    if @address.save  #←ここでバリデーションエラーか否か判断する。
+       redirect_to addresses_path
+       flash[:notice] = '新しい住所を登録しました'
+    else  #エラーのとき、saveが上手く行かなかったときの記述
+       render 'index'
+       flash[:notice] = '住所の登録に失敗しました'
     end
  end
  
@@ -25,13 +26,15 @@ class Public::AddressesController < ApplicationController
  def update
   @address = Address.find(params[:id])
   @address.update(address_params)
-    redirect_to public_addresses_path
+    redirect_to addresses_path
+    flash[:notice] = '住所を編集しました。'
  end
  
  def destroy
   address = Address.find(params[:id])
   address.destroy
-   redirect_to public_addresses_path
+   redirect_to addresses_path
+   flash[:notice] = '住所を削除しました。'
  end
 
 private
