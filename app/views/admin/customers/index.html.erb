@@ -15,8 +15,9 @@
           <% @customers.each do |customer| %>
             <%# @publics = Public.allですべてのPublicユーザーの情報を取得して、順番に並べて表示 %>
               <tr>
-                <td><%= customer.id %></td>
-                 <td><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %></td>
+                <!--<td><%#= customer.id %></td>-->
+                 <td><%= link_to customer.id, admin_customer_path(customer.id)%></td>
+                 <td><%= link_to customer.name, admin_customer_path(customer.id)%></td>
                  <td><%= customer.email %></td>
                 <td>
                   <% if customer.is_deleted %>

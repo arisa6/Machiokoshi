@@ -78,3 +78,5 @@ gem "sassc", "< 2.2.0"
 gem 'kaminari'
 
 gem "enum_help"
+
+gem 'rails-i18n'

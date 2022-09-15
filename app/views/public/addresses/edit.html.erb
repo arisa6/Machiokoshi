@@ -4,7 +4,7 @@
       <h2 class="border-bottom">配送先編集</h2>
     </div>
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
-      <%= form_with model: @address, url: address_path, method: :put do |f| %>
+      <%= form_with model: @address, url: _address_path, method: :put do |f| %>
         <table class="table table-hover">
           <tr>
             <th>郵便番号(ハイフンなし)</th>
@@ -19,7 +19,7 @@
             </td>
           </tr>
           <tr>
-            <th>宛名</th>
+            <th>名前(お届け先)</th>
             <td>
               <%= f.text_field :name, autofocus: true, autocomplete: "name",:size=>"40"  %>
             </td>

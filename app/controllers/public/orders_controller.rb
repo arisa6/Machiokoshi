@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
        order_detail.price = cart.item.price
        order_detail.save
     end
-       redirect_to complete_public_orders_path
+       redirect_to complete_orders_path
        cart_items.destroy_all
    else
        @order = Order.new(order_params)
