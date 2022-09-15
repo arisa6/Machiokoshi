@@ -30,5 +30,4 @@ class Admin::CustomersController < ApplicationController
     :postal_code, :address,:phone_number, :email, :is_deleted)
   end
   
-  
 end

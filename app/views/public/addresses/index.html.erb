@@ -1,3 +1,13 @@
+<% if @address.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class='container'>
   <div class='row'>
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
@@ -19,7 +29,7 @@
             </td>
           </tr>
           <tr>
-            <th>宛名</th>
+            <th>名前(お届け先)</th>
             <td>
               <%= f.text_field :name,:size=>"40" %>
             </td>

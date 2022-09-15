@@ -1,4 +1,3 @@
-<%= render "public/shared/error_messages", resource: resource %>
 <div class="container">
     <div class="row">
       <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
@@ -7,21 +6,22 @@
       <div class="col-md-7 offset-1" style="margin-top:30px; ">
         <h10><span class="border-bottom">会員登録が済んでいる方</span></h10><br>
              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="form-group" style="margin-top: 40px;">
-                  <i class="bi bi-envelope"><%= f.label :メールアドレス %></i>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email"%><br>
-              </div>
-              <div class="form-group">
-                  <i class="bi bi-key"><%= f.label :パスワード %></i>&emsp;&emsp;
-                  <%= f.password_field :password, autocomplete: "current-password"%><br>
-              </div>
-                <% if devise_mapping.rememberable? %>
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :パスワードを登録する %>
-                <% end %>
-                <div style="margin-top: 55px;">
-                  <button type="submit" class="btn btn-danger">ログイン</button>
-                </div>
+              <%= render "public/shared/error_messages", resource: resource %>
+                 <div class="form-group" style="margin-top: 40px;">
+                    <i class="bi bi-envelope"><%= f.label :メールアドレス %></i>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email"%><br>
+                 </div>
+                 <div class="form-group">
+                    <i class="bi bi-key"><%= f.label :パスワード %></i>&emsp;&emsp;
+                    <%= f.password_field :password, autocomplete: "current-password"%><br>
+                 </div>
+                  <% if devise_mapping.rememberable? %>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :パスワードを登録する %>
+                  <% end %>
+                  <div style="margin-top: 55px;">
+                    <button type="submit" class="btn btn-danger">ログイン</button>
+                  </div>
              <% end %>
       </div>
             <div class="col-md-4" style="margin-top:30px; ">

@@ -30,13 +30,29 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
       address:
-        customer_id: '会員情報の習得に失敗しました'
-        name: '名前が入力されていません'
-        postal_code: '郵便番号が入力されていません'
-        address: '住所が入力されていません'
+        customer_id: '会員情報'
+        name: '名前'
+        postal_code: '郵便番号'
+        address: '住所'
       cart_item:
-        item_id: 'カート内に商品が入っていません'
+        item_id: 'カート内に商品'
+      customer:
+        last_name: '名前(名)'
+        first_name: '名前(姓)'
+        last_name_kana: '名前(名)フリガナ'
+        first_name_kana: '名前(姓)フリガナ'
+        postal_code: '郵便番号'
+        address: '住所'
+        phone_number: '電話番号'
+        is_customer_status: '会員ステータス'
+        email: 'メールアドレス'
+        password: 'パスワード'
+
+        
+        
+        
         
     
     
