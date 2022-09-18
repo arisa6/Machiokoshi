@@ -13,8 +13,6 @@
 (https://user-images.githubusercontent.com/105696988/190891804-7c9fe905-69bf-48ec-b55e-dccd1e48ea3d.png)
 (https://user-images.githubusercontent.com/105696988/190891811-f5e8a550-6d4a-4a58-9c59-dda56f01d319.png)
 
-
-
 ### テーマを選んだ理由
 テーマを選んだ理由は3つあります。
 - 生産者×特産品を求める消費者を繋げる。
@@ -69,5 +67,5 @@
 
 ## 使用素材
 *商品画像*
-- photp AC <https://www.photo-ac.com/>
-- depositphotos <https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>
+- photp AC (<https://www.photo-ac.com/>)
+- depositphotos (<https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>)
