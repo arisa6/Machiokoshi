@@ -9,9 +9,12 @@
 特定の地域でしか食べることのできない特産品作る生産者と関わることで食材への関心が高まり、その地域全体を知るきっかけを作ることができると考えます。
 そして、地域と繋がる機会を生み出し地域活性化つなげるセレクトecサイトです。
 
+(https://user-images.githubusercontent.com/105696988/190891262-a7690ff0-e4ee-43b6-9b9d-5c6445aa9818.png)
+(https://user-images.githubusercontent.com/105696988/190891804-7c9fe905-69bf-48ec-b55e-dccd1e48ea3d.png)
+(https://user-images.githubusercontent.com/105696988/190891811-f5e8a550-6d4a-4a58-9c59-dda56f01d319.png)
 
 ### テーマを選んだ理由
-テーマを選んだ理由は大きく3つあります。
+テーマを選んだ理由は3つあります。
 - 生産者×特産品を求める消費者を繋げる。
 - あまり知られていない特産品を広めたい生産者×マイナー好きな消費者を繋げる。
 - 観光地を盛り上げたい地元民×行ったことのない場所へ旅したい消費者を繋げる。
@@ -35,6 +38,7 @@
 - 以前に訪れた地での特産物を手に入れたいとき
 
 ## 設計書
+(https://user-images.githubusercontent.com/105696988/190892710-f10ec52d-8a45-4031-8674-5f10c4d7aee7.jpg)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,7 +47,25 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 使用技術
+- Ruby 3.1.2
+- Ruby on Rails 6.1.6
+- MySQL 
+- Nginx
+- Puma
+- AWS
+- CircleCi CI/CD
+
+## 機能一覧
+- ユーザー登録、ログイン機能(devise)
+- 画像投稿(refile)
+- ページネーション機能(kaminari)
+- 数値と文字列を紐付け(enum)
+- ステータス機能
+- 決済機能
+- 注文・発送機能
+
 ## 使用素材
 *商品画像*
-- photp AC <https://www.photo-ac.com/>
-- depositphotos <https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>
+- photp AC (<https://www.photo-ac.com/>)
+- depositphotos (<https://jp.depositphotos.com/stock-photos/%E8%BE%B2%E6%A5%AD.html>)
