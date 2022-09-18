@@ -9,9 +9,10 @@
 特定の地域でしか食べることのできない特産品作る生産者と関わることで食材への関心が高まり、その地域全体を知るきっかけを作ることができると考えます。
 そして、地域と繋がる機会を生み出し地域活性化つなげるセレクトecサイトです。
 
-(https://user-images.githubusercontent.com/105696988/190891262-a7690ff0-e4ee-43b6-9b9d-5c6445aa9818.png)
-(https://user-images.githubusercontent.com/105696988/190891804-7c9fe905-69bf-48ec-b55e-dccd1e48ea3d.png)
-(https://user-images.githubusercontent.com/105696988/190891811-f5e8a550-6d4a-4a58-9c59-dda56f01d319.png)
+![readme(1)](https://user-images.githubusercontent.com/105696988/190893144-6346218b-4a70-4613-a61c-cc677807ad48.png)
+![readme(2)](https://user-images.githubusercontent.com/105696988/190893150-9a151a29-ef44-44f2-b472-bea576239332.png)
+![readme(3)](https://user-images.githubusercontent.com/105696988/190893153-1ba193b9-0c1e-4cfa-a946-8887e9aca793.png)
+
 
 ### テーマを選んだ理由
 テーマを選んだ理由は3つあります。
