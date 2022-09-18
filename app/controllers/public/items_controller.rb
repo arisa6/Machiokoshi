@@ -14,5 +14,9 @@ class Public::ItemsController < ApplicationController
   def item_params
   	params.require(:item).permit(:name, :introduction, :genre_id, :price, :is_active, :store, :image)
   end
+  
+  def customer_params 
+   params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:phone_number,:email,:is_deleted)
+  end
      
 end

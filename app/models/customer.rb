@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
-  # has_many :favorites,dependent: :destroy
+  has_many :favorites,dependent: :destroy
   has_many :items, dependent: :destroy
   
   validates :last_name,presence: true
@@ -30,16 +30,15 @@ class Customer < ApplicationRecord
   def name
     [first_name, last_name].join(' ')
   end
+  
   # def full_name
   #   self.last_name + " " + self.first_name
   # end
   
   
-  # いいねをしたかしていないかの判定メソッド
-  # def already_favorited?(item)
-  #   self.favorites.exists?(item_id: item.id) #以前にitem_idがテーブルに保存されているかを調べる
+  # def favorited_by?(item)  #item_idがFavoritesテーブル内に存在（exists?）するかどうかを判断
+  #   favorites.exists?(item_id: item.id)  #以前にitem_idがテーブルに保存されているかを調べる
   # end
-
   
   
 end
