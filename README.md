@@ -39,7 +39,7 @@
 - 以前に訪れた地での特産物を手に入れたいとき
 
 ## 設計書
-(https://user-images.githubusercontent.com/105696988/190892710-f10ec52d-8a45-4031-8674-5f10c4d7aee7.jpg)
+![er](https://user-images.githubusercontent.com/105696988/190893293-482c1b00-e4c8-4ef3-b285-0ddb047ef88b.jpg)
 
 ## 開発環境
 - OS：Linux(CentOS)
