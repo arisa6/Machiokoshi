@@ -57,6 +57,9 @@
     </div>
   </div>
       <p style="text-align: right;margin-top:30px;"><%= link_to "買い物を続ける", items_path, class: "btn btn-outline-danger" %>
-      <%= link_to "カートを空にする",  destroy_all_cart_items_path, method: :delete, class: "btn btn-outline-danger" %>
-      <%= link_to "購入画面に進む", new_order_path, class: "btn btn-outline-danger" %></p>
+       <%= link_to "カートを空にする",  destroy_all_cart_items_path, method: :delete, class: "btn btn-outline-danger" %>
+        <% if @cart_items.any? %>
+         <%= link_to "購入画面に進む", new_order_path, class: "btn btn-outline-danger" %>
+        <% end %>
+      </p>
 </div>

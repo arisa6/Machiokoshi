@@ -3,7 +3,6 @@
     <div class="col-md-10 offset-1" style="text-align: center;margin-top:30px; ">
       <h2 class="border-bottom">商品詳細</h2>
     </div>
-    
       <div class="col-md-5 offset-1" style="margin-top:30px; ">
         <% if @item.image.attached? %>
           <%= image_tag @item.image, class: "thumb-300-300" %>
@@ -12,42 +11,45 @@
         <% end %>
       </div>
         <div class="col-md-5 " style="margin-top:30px; ">
-          <small><%= @item.store %></small><br>
-          <h6 class="font-weight-bold"><%= @item.name %></h6>
-            <!--<%# if item.favorited_by?(current_customer) %>-->
-            <!--    <p>-->
-            <!--     <%#= link_to item_favorites_path(item), method: :delete do %>-->
-            <!--      ♥<%#= item.favorites.count %> いいね-->
-            <!--     <%# end %>-->
-            <!--    </p>-->
-            <!--<%# else %>-->
-            <!--    <p>-->
-            <!--     <%#= link_to item_favorites_path(item), method: :post do %>-->
-            <!--      ♡<%#= item.favorites.count %> いいね-->
-            <!--     <%# end %>-->
-            <!--    </p>-->
-            <!--<%# end %>-->
+          <h5><%= @item.store %></h5><br>
+            <h6 class="font-weight-bold"><%= @item.name %></h6>
+              
+              
+              <!--いいね機能実装予定-->
+              <!--<%# if @item.favorited_by?(current_customer) %>-->
+              <!--  <p>-->
+              <!--    <%#= link_to item_favorites_path(@item), method: :delete do %>-->
+              <!--      <i class="bi bi-suit-heart-fill"></i>-->
+              <!--      <%#= @item.favorites.count %> いいね-->
+              <!--    <%# end %>-->
+              <!--  </p>-->
+              <!--<%# else %>-->
+              <!--  <p>-->
+              <!--    <%#= link_to item_favorites_path(@item), method: :post do %>-->
+              <!--      <i class="bi bi-suit-heart"></i>-->
+              <!--      <%#= @item.favorites.count %> いいね-->
+              <!--    <%# end %>-->
+              <!--  </p>-->
+              <!--<%# end %>-->
+              
             <p><%= @item.with_tax_price.to_s(:delimited) %><span style="font-size:5px;">円(税込)</span></p>
-            <small><%= @item.introduction %></small>
+          <h5><%= @item.introduction %></h5>
         </div>
-        </div>
-        
-        <div class="col-md-10 " style="text-align: right;margin-top:30px; ">
-          <%= form_with model: @cart_item,url: cart_items_path, method: :post do |f| %>  <!--カート機能-->
-            <% if customer_signed_in? %>  <!--会員であるかを確認-->
-              <%= f.hidden_field :item_id, :value =>@item.id %>  <!--商品情報の値を送る-->
+      <div class="col-md-10 " style="text-align: right;margin-top:30px; ">
+        <%= form_with model: @cart_item,url: cart_items_path, method: :post do |f| %>  <!--カート機能-->
+          <% if customer_signed_in? %>  <!--会員であるかを確認-->
+            <%= f.hidden_field :item_id, :value =>@item.id %>  <!--商品情報の値を送る-->
               <div class="cart_item">
                 <span style="font-size:20px;"><%= f.select :amount, *[1..10] %></span> <!--個数入力フォーム-->
                 <%= f.submit "おかいものかごに入れる", class:"btn btn-outline-danger btn-lg" %>
               </div>
-            <% else %>
+          <% else %>
               <div class="button" style="text-align: right;">
                 <%= link_to "購入するには会員登録が必要です",  new_customer_registration_path, class: "btn btn-outline-danger" %>
                 <%= link_to "ログインはこちら", customer_session_path, class: "btn btn-outline-danger"%>
               </div>
-            <% end %> 
-          <% end %>
-        </div>
+          <% end %> 
+        <% end %>
+      </div>
   </div>
 </div>
-          

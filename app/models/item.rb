@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
     has_one_attached :image
     belongs_to :genre
-    # belongs_to :customer
-    # has_many :favorites,dependent: :destroy
+    belongs_to :customer
+    # has_many :favorites,dependent: :destroy　実装予定
     has_many :cart_items,dependent: :destroy
     has_many :order_details,dependent: :destroy
     
@@ -25,9 +25,10 @@ class Item < ApplicationRecord
         (price * 1.1).floor
     end
         
-    # def favorited_by?(customer)
-    #   favorites.exists?(customer_id: customer.id)
-    # end
+    def favorited_by?(customer)  #customer_idがFavoritesテーブル内に存在（exists?）するかどうかを判断
+      favorites.exists?(customer_id: customer.id)  #以前にcustomer_idがテーブルに保存されているかを調べる
+    end
+
     
     def subtotal  #小計を求めるコマンド
         item.with_tax_price * amount
