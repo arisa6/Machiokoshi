@@ -2,7 +2,7 @@ class Item < ApplicationRecord
     has_one_attached :image
     belongs_to :genre
     belongs_to :customer
-    has_many :favorites,dependent: :destroy
+    # has_many :favorites,dependent: :destroy　実装予定
     has_many :cart_items,dependent: :destroy
     has_many :order_details,dependent: :destroy
     

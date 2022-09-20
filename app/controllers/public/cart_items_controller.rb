@@ -34,7 +34,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.amount += @new_cart_item.amount
       @cart_item.save
     else  #エラーのとき、saveが上手く行かなかったときの記述
-      @new_cart_item.save
+      @new_cart_item.save!
       # flash[:notice] = '住所の登録に失敗しました'
     end
     redirect_to cart_items_path
