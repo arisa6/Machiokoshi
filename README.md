@@ -39,7 +39,7 @@
 - 以前に訪れた地での特産物を手に入れたいとき
 
 ## 設計書
-[PF_ER図.drawio.pdf](https://github.com/arisa6/Machiokoshi/files/9609825/PF_ER.drawio.pdf)
+![PF_ER図.drawio.pdf](https://github.com/arisa6/Machiokoshi/files/9609825/PF_ER.drawio.pdf)
 
 ## 開発環境
 - OS：Linux(CentOS)
